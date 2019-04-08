@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "alexjreyes",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "My portfolio",
+  "version": "0.9.0",
+  "author": "Alex Reyes <me@alexjreyes.com>",
   "dependencies": {
     "gatsby": "^2.3.5",
     "gatsby-image": "^2.0.37",
