@@ -6,8 +6,11 @@ const Contact = ({ siteTitle }) => (
     <a className="contact__link" href="http://github.com/alexako/" target="_blank">
       <i className="fab fa-github-alt fa-3x" aria-hidden="true"></i>
     </a>
-    <a className="contact__link" href="http://twitter.com/kludgebot/" target="_blank">
+    <a className="contact__link" href="https://twitter.com/kludgebot/" target="_blank">
       <i className="fab fa-twitter fa-3x" aria-hidden="true"></i>
+    </a>
+    <a className="contact__link" href="https://linkedin.com/in/alexjreyes" target="_blank">
+      <i className="fab fa-linkedin-in fa-3x" aria-hidden="true"></i>
     </a>
     <a className="contact__link">
       <i className="far fa-envelope fa-3x" aria-hidden="true"></i>
