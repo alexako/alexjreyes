@@ -1,0 +1,85 @@
+@function em($pixels, $context: 12) {
+    @return #{$pixels/$context}em;
+}
+
+@mixin text-overflow() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin transition($transition) {
+    -webkit-transition: $transition;
+    -moz-transition: $transition;
+    -ms-transition: $transition;
+    -o-transition: $transition;
+}
+
+@mixin breakpoint($class) {
+    @if $class == xs {
+        @media (max-width: 767px) {
+        @content;
+        }
+    } @else
+    if $class == sm {
+        @media (min-width: 768px) {
+        @content;
+        }
+    } @else
+    if $class == md {
+        @media (min-width: 992px) {
+        @content;
+        }
+    } @else
+    if $class == lg {
+        @media (min-width: 1200px) {
+        @content;
+        }
+    } @else {
+        @warn "Breakpoint mixin supports: xs, sm, md, lg";
+    }
+}
+
+@mixin spinner($size, $thickness, $overlay-color) {
+    .overlay {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: $overlay-color;
+    }
+    .spinner {
+        position: absolute;
+        top: 40%;
+        left: 0;
+        right: 0;
+        height: $size;
+        width: $size;
+        margin: 0px auto;
+        -webkit-animation: rotation .6s infinite linear;
+        -moz-animation: rotation .6s infinite linear;
+        -o-animation: rotation .6s infinite linear;
+        animation: rotation .6s infinite linear;
+        border-left: $thickness solid rgba(0,174,239,.15);
+        border-right: $thickness solid rgba(0,174,239,.15);
+        border-bottom: $thickness solid rgba(0,174,239,.15);
+        border-top: $thickness solid rgba(0,174,239,.8);
+        border-radius: 100%;
+    }
+
+    @-webkit-keyframes rotation {
+        from {-webkit-transform: rotate(0deg);}
+        to {-webkit-transform: rotate(359deg);}
+    }
+    @-moz-keyframes rotation {
+        from {-moz-transform: rotate(0deg);}
+        to {-moz-transform: rotate(359deg);}
+    }
+    @-o-keyframes rotation {
+        from {-o-transform: rotate(0deg);}
+        to {-o-transform: rotate(359deg);}
+    }
+    @keyframes rotation {
+        from {transform: rotate(0deg);}
+        to {transform: rotate(359deg);}
+    }
+}

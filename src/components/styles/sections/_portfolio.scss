@@ -1,0 +1,34 @@
+.portfolio {
+    width: 100%;
+    text-align: center;
+    h2 {
+      font-size: 3em;
+    }
+    i {
+      text-align: center;
+    }
+  }
+  
+  #projects {
+    @include breakpoint(md) {
+      display: grid;
+      grid-template-columns: 33% 33% 33%;
+      margin-top: 2em;
+    }
+    .project {
+      margin-bottom: 35vh;
+      h3 {
+        font-size: 2em;
+        @include breakpoint(md) {
+          font-size: 1.5em;
+        }
+      }
+      img {
+        height: 100%;
+        width: 100%;
+      }
+      @include breakpoint(md) {
+        margin-bottom: 5%;
+      }
+    }
+  }
