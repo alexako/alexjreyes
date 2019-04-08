@@ -1,0 +1,35 @@
+@import 'extensions';
+@import 'mixins';
+@import 'variables';
+
+
+html,
+body {
+  height: 100vh;
+}
+
+body {
+  font-family: $baseFontStack;
+  font-size: 16px;
+  color: $grey;
+  background-color: $darkGrey;
+  width: 100%;
+  margin: 0;
+}
+
+a {
+  color: $green;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: $green;
+}
+
+/* Sections */
+@import 'sections/intro';
+@import 'sections/contact';
+@import 'sections/portfolio';

@@ -1,0 +1,37 @@
+
+
+.intro-container {
+    margin-top: 13em;
+    text-align: center;
+
+    &__header-lettering {
+        color: $lightGrey;
+        font-family: $headerFontStack;
+        font-size: 1.8em;
+        font-weight: 700;
+        letter-spacing: -0.05em;
+        line-height: 1.7em;
+        margin-bottom: 0;
+    }
+
+    &__highlight {
+        color: $green;
+    }
+
+    &__content {
+        width: 80%;
+        margin: 0 auto;
+        line-height: 1.9em;
+    }
+
+    &__content--link {
+        font-size: 1.05em;
+        font-weight: 700;
+        padding: 0.15em;
+        color: $highlightGrey;
+        @include transition(0.2s);
+        &:hover {
+            background-color: $hoverGrey;
+        }
+    }
+}
