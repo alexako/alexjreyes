@@ -5,6 +5,7 @@
   "version": "0.9.0",
   "author": "Alex Reyes <me@alexjreyes.com>",
   "dependencies": {
+    "@fortawesome/fontawesome-pro": "^5.8.1",
     "gatsby": "^2.3.5",
     "gatsby-cli": "^2.5.5",
     "gatsby-image": "^2.0.37",
@@ -22,7 +23,6 @@
     "react-helmet": "^5.2.0"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-pro": "^5.8.1",
     "prettier": "^1.16.4"
   },
   "keywords": [
