@@ -10,23 +10,32 @@ const Intro = ({ siteTitle }) => (
       and stuff.
     </h1>
     <div className="intro-container__content">
-      Ang Lorem Ipsum ay ginagamit na modelo ng industriya ng pagpriprint at 
+      A bit of a jack of all trades and a master of puns.
+      I enjoy building anything from web apps with 
       <span className="intro-container__content--link">
-        pagtytypeset
-      </span>. 
-      Ang Lorem Ipsum ang naging regular na modelo simula pa noong 1500s,
-      noong may isang di kilalang 
-      <span className="intro-container__content--link">
-        manlilimbag
+        Angular
       </span> 
-      and kumuha ng galley ng type at ginulo ang 
-      pagkaka-ayos nito upang makagawa ng libro ng mga type specimen. Nalagpasan nito hindi 
-      lang limang siglo, kundi 
+      or
       <span className="intro-container__content--link">
-        nalagpasan din
+        React,
+      </span>
+      to silly Cat Fact APIs in 
+      <span className="intro-container__content--link">
+      ExpressJS,
       </span> 
-      nito ang paglaganap ng electronic typesetting 
-      at nanatiling parehas. 
+      to quirky robots with the 
+      <span className="intro-container__content--link">
+        RPi.
+      </span> 
+      I tinker around with all things tech-related and
+      anything else that might interest me.
+      Got any questions for me?
+      Email
+      <a className="intro-container__content--link"
+          href="mailto:me@alexjreyes.com?subject=Hi, Alex!">
+        me@alexjreyes.com 
+      </a> 
+      or contact me through any of these platforms:
     </div>
   </div>
 )
