@@ -12,7 +12,7 @@ const Contact = ({ siteTitle }) => (
     <a className="contact__link" href="https://linkedin.com/in/alexjreyes" target="_blank">
       <i className="fab fa-linkedin-in fa-3x" aria-hidden="true"></i>
     </a>
-    <a className="contact__link">
+    <a className="contact__link" href="mailto:me@alexjreyes.com?subject=Hi, Alex!">
       <i className="far fa-envelope fa-3x" aria-hidden="true"></i>
     </a>
   </div>
