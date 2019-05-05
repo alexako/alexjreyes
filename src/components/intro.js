@@ -15,10 +15,6 @@ const Intro = ({ siteTitle }) => (
       <span className="intro-container__content--link">
         Angular
       </span> 
-      or
-      <span className="intro-container__content--link">
-        React,
-      </span>
       to silly Cat Fact APIs in 
       <span className="intro-container__content--link">
       ExpressJS,
@@ -28,7 +24,7 @@ const Intro = ({ siteTitle }) => (
         RPi.
       </span> 
       I tinker around with all things tech-related and
-      anything else that might interest me.
+      anything else that I might find interesting.
       Got any questions for me?
       Email
       <a className="intro-container__content--link"
