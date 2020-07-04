@@ -1,0 +1,22 @@
+.home-link-container {
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: calc(-1em - 5px);
+    background-color: $darkGrey;
+    border-bottom: 1px solid #232323;
+}
+
+.home-link {
+    color: $lightGrey;
+    font-family: $headerFontStack;
+    font-size: 1.8em;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+
+    &__highlight {
+        color: $green;
+    }
+}

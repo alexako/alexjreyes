@@ -29,7 +29,26 @@ a {
   background: $green;
 }
 
+.main-container {
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  position: relative;
+  height: calc(100vh - 10px - 2em);
+  width: 100%;
+  max-width: 1120px;
+  margin: 5px;
+  padding: 1em;
+  box-shadow: $boxshadow;
+}
+
+
 /* Sections */
 @import 'sections/intro';
+@import 'sections/blog-link';
+@import 'sections/home-link';
 @import 'sections/contact';
 @import 'sections/portfolio';
+@import 'sections/post';

@@ -1,0 +1,21 @@
+.blog-container {
+    height: 100%;
+    overflow: auto;
+}
+
+.post-list-container {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(1,minmax(250px,650px));
+    justify-content: center;
+}
+
+.post-list {
+    padding: 1em;
+    box-shadow: $boxshadow;
+    color: snow;
+}
+
+.post-body {
+    color: $blogBaseFontColor;
+}
