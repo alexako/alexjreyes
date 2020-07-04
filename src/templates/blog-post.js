@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../components/layout';
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
+import HomeLink from '../components/home-link';
 
 function BlogPost(props) {
 
@@ -9,6 +10,12 @@ function BlogPost(props) {
 
     return (
         <Layout>
+            <HomeLink />
+            <div className="blog-index-button">
+                <Link to="/blog">
+                    <h2>Back</h2>
+                </Link>
+            </div>
             <div>
                 <h1>{title}</h1>
                 <div dangerouslySetInnerHTML={{ __html: post.html }} />

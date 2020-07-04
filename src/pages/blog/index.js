@@ -1,11 +1,13 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Layout from '../../components/layout'
+import HomeLink from '../../components/home-link';
 
 const IndexPage = (props) => {
   const postList = props.data.allMarkdownRemark;
   return (
     <Layout>
+      <HomeLink />
       {postList.edges.map(({ node }, i) => (
         <Link to={node.fields.slug} className="link" >
           <div className="post-list">

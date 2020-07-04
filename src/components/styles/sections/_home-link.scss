@@ -1,0 +1,18 @@
+.home-link-container {
+    display: flex;
+    justify-content: center;
+}
+
+.home-link {
+    color: $lightGrey;
+    font-family: $headerFontStack;
+    font-size: 1.8em;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+
+    &__highlight {
+        color: $green;
+    }
+}
