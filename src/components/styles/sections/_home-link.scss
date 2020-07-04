@@ -18,5 +18,10 @@
 
     &__highlight {
         color: $green;
+        transition: 0.3s color ease-in-out;
+    }
+
+    &__highlight:hover {
+        color: $orange;
     }
 }
