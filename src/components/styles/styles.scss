@@ -37,11 +37,11 @@ a {
 .box {
   position: relative;
   height: calc(100vh - 10px - 2em);
-  max-height: 920px;
+  width: 100%;
   max-width: 1120px;
   margin: 5px;
   padding: 1em;
-  box-shadow: 0px 1px 6px $shadow;
+  box-shadow: $boxshadow;
 }
 
 

@@ -1,6 +1,10 @@
 .home-link-container {
     display: flex;
     justify-content: center;
+    position: sticky;
+    top: calc(-1em - 5px);
+    background-color: $darkGrey;
+    border-bottom: 1px solid #232323;
 }
 
 .home-link {

@@ -10,15 +10,17 @@ function BlogPost(props) {
 
     return (
         <Layout>
-            <HomeLink />
-            <div className="blog-index-button">
-                <Link to="/blog">
-                    <h2>Back</h2>
-                </Link>
-            </div>
-            <div>
-                <h1>{title}</h1>
-                <div className="post-body" dangerouslySetInnerHTML={{ __html: post.html }} />
+            <div className="blog-container">
+                <HomeLink />
+                <div className="blog-index-button">
+                    <Link to="/blog">
+                        <h2>Back</h2>
+                    </Link>
+                </div>
+                <div>
+                    <h1>{title}</h1>
+                    <div className="post-body" dangerouslySetInnerHTML={{ __html: post.html }} />
+                </div>
             </div>
         </Layout>
     )
