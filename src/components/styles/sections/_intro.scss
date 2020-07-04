@@ -34,7 +34,7 @@
         font-weight: 700;
         padding: 0.15em;
         color: $highlightGrey;
-        @include transition(0.2s);
+        @include transition(0.3s);
         &:hover {
             background-color: $hoverGrey;
         }
