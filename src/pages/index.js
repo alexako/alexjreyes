@@ -21,8 +21,8 @@ const IndexPage = () => (
             ]}
         />
 
-        <Intro />
-        <Contact />
+            <Intro />
+            <Contact />
     </Layout>
 )
 

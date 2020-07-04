@@ -29,7 +29,24 @@ a {
   background: $green;
 }
 
+.main-container {
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  position: relative;
+  height: calc(100vh - 10px - 2em);
+  max-height: 920px;
+  max-width: 1120px;
+  margin: 5px;
+  padding: 1em;
+  box-shadow: 1px 1px 5px $shadow;
+}
+
+
 /* Sections */
 @import 'sections/intro';
+@import 'sections/blog-link';
 @import 'sections/contact';
 @import 'sections/portfolio';

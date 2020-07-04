@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import BlogLink from './blog-link'
 
 const Intro = ({ siteTitle }) => (
     <div className="intro-container">
+        <BlogLink />
         <h1 className="intro-container__header-lettering">
             Hi, I'm
             <span className="intro-container__highlight"> Alex</span>. I write
