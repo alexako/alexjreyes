@@ -18,7 +18,7 @@ function BlogPost(props) {
             </div>
             <div>
                 <h1>{title}</h1>
-                <div dangerouslySetInnerHTML={{ __html: post.html }} />
+                <div className="post-body" dangerouslySetInnerHTML={{ __html: post.html }} />
             </div>
         </Layout>
     )
