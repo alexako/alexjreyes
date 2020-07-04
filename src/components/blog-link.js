@@ -10,4 +10,12 @@ const BlogLink = () => (
     </Link>
 )
 
+BlogLink.propTypes = {
+    siteTitle: PropTypes.string,
+}
+
+BlogLink.defaultProps = {
+    siteTitle: ``,
+}
+
 export default BlogLink
