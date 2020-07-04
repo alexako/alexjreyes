@@ -5,6 +5,7 @@ const Contact = ({ siteTitle }) => (
     <div className="contact">
         <a
             className="contact__link"
+            rel="noreferrer"
             href="http://github.com/alexako/"
             target="_blank"
         >
@@ -12,6 +13,7 @@ const Contact = ({ siteTitle }) => (
         </a>
         <a
             className="contact__link"
+            rel="noreferrer"
             href="https://twitter.com/kludgebot/"
             target="_blank"
         >
@@ -19,6 +21,7 @@ const Contact = ({ siteTitle }) => (
         </a>
         <a
             className="contact__link"
+            rel="noreferrer"
             href="https://linkedin.com/in/alexjreyes"
             target="_blank"
         >
