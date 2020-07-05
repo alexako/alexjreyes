@@ -2,7 +2,8 @@ module.exports = {
   siteMetadata: {
     title: `Alex Reyes`,
     description: `Hey, I'm Alex. I write code and stuff.`,
-    author: `kludgebot`,
+    author: `@kludgebot`,
+    siteUrl: `https://alexako.com/`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -18,7 +19,22 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          `gatsby-remark-prismjs`,
+        ]
+      }
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/pages/`,
+      },
+    },
     'gatsby-plugin-offline',
     {
       resolve: `gatsby-source-filesystem`,
