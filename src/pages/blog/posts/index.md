@@ -2,7 +2,7 @@
 title: My first Blog post
 description: This post is related to the gatsbyjs
 date: '2018-09-26'
-image: ''
+image: 'gatsby-astronaut.png'
 ---
 
 Don't build a website with last decade's tech. The future of the web is mobile,
@@ -16,6 +16,16 @@ electronic typesetting, remaining essentially unchanged. It was popularised in
 the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
 and more recently with desktop publishing software like Aldus PageMaker including
 versions of Lorem Ipsum.
+
+```js
+{
+    resolve: `gatsby-source-filesystem`,
+    options: {
+    path: `${__dirname}/src/pages`,
+    name: "pages",
+    },
+}
+```
 
 ## Why do we use it?
 

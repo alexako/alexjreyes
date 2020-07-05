@@ -2,11 +2,26 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Layout from '../../components/layout'
 import HomeLink from '../../components/home-link';
+import SEO from '../../components/seo';
 
 const IndexPage = (props) => {
   const postList = props.data.allMarkdownRemark;
   return (
     <Layout>
+      <SEO
+        title="Blog"
+        keywords={[
+            `alex reyes`,
+            `alex`,
+            `reyes`,
+            `alexako`,
+            `web developer`,
+            `web`,
+            `developer`,
+            `javascript`,
+            `angular`,
+        ]}
+      />
       <div className="blog-container">
         <HomeLink />
         <div className="post-list-container">
