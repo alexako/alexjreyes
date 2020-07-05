@@ -17,6 +17,8 @@ const IndexPage = () => (
                 `web developer`,
                 `web`,
                 `developer`,
+                `javascript`,
+                `angular`,
             ]}
         />
 
