@@ -29,18 +29,31 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     path: `${__dirname}/src/pages/`,
+    //   },
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/pages/`,
+        path: `${__dirname}/src/components/portfolio/projects/`,
       },
     },
     'gatsby-plugin-offline',
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     path: `${__dirname}/src/pages`,
+    //     name: "pages",
+    //   },
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/pages`,
-        name: "pages",
+        path: `${__dirname}/src/components/portfolio/projects/`,
+        name: "portfolio"
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

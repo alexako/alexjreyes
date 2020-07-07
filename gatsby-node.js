@@ -1,6 +1,56 @@
 const path = require("path")
 const { createFilePath, createFileNode } = require(`gatsby-source-filesystem`)
 
+exports.createPortfolio = ({ actions, graphql }) => {
+    const { createPage } = actions
+
+    const PortfolioProjectTemplate = path.resolve(`src/templates/project-template.js`)
+
+    return new Promise((resolve, reject) => {
+
+        resolve(graphql(`
+    {
+      allMarkdownRemark(
+        sort: { order: DESC, fields: [frontmatter___title] }
+        limit: 1000
+        filter: { fields: { slug: { regex: "/project/" }}}
+      ) {
+        edges {
+          node {
+              fields{
+                  slug
+              }
+            frontmatter {
+              title
+            }
+          }
+        }
+      }
+    }
+  `).then(result => {
+                if (result.errors) {
+                    console.log(result.errors)
+                    return reject(result.errors)
+                }
+
+                const blogTemplate = path.resolve('./src/templates/project-template.js');
+
+                result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+                    createPage({
+                        path: node.fields.slug,
+                        component: blogTemplate,
+                        context: {
+                            slug: node.fields.slug,
+                        }, // additional data can be passed via context
+                    })
+                })
+                return
+            })
+        )
+    })
+}
+
+
 exports.createPages = ({ actions, graphql }) => {
     const { createPage } = actions
 

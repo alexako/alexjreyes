@@ -3,6 +3,7 @@
 .intro-container {
     padding-top: 20%;
     text-align: center;
+    height: calc(100vh - 20%);
 
     &__header-lettering {
         color: $lightGrey;
