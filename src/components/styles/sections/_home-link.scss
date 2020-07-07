@@ -1,10 +1,12 @@
 .home-link-container {
     display: flex;
     justify-content: center;
-    position: sticky;
-    top: calc(-1em - 5px);
-    background-color: $darkGrey;
+    background-color: $background;
     border-bottom: 1px solid #232323;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 99999;
 }
 
 .home-link {
@@ -14,7 +16,6 @@
     font-weight: 700;
     letter-spacing: -0.05em;
     line-height: 1.7em;
-    margin-bottom: 0;
 
     &__highlight {
         color: $green;
