@@ -1,7 +1,7 @@
 
 
 .intro-container {
-    margin-top: 13em;
+    padding-top: 20%;
     text-align: center;
 
     &__header-lettering {
@@ -16,6 +16,11 @@
 
     &__highlight {
         color: $green;
+        transition: 0.3s color ease-in-out;
+    }
+
+    &__highlight:hover {
+        color: $orange;
     }
 
     &__content {
@@ -29,9 +34,9 @@
         font-weight: 700;
         padding: 0.15em;
         color: $highlightGrey;
-        @include transition(0.2s);
+        @include transition(0.3s);
         &:hover {
-            background-color: $hoverGrey;
+            background-color: $darkGrey-hover;
         }
     }
 }

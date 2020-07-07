@@ -4,5 +4,10 @@
     &__link {
         font-size: 1em;
         margin: 0 0.75em;
+        transition: 0.3s color ease-in-out;
+    }
+
+    &__link:hover {
+        color: $orange;
     }
 }

@@ -11,7 +11,7 @@ body {
   font-family: $baseFontStack;
   font-size: 16px;
   color: $grey;
-  background-color: $darkGrey;
+  background-color: $background;
   width: 100%;
   margin: 0;
 }
@@ -29,7 +29,26 @@ a {
   background: $green;
 }
 
+.main-container {
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  position: relative;
+  height: calc(100vh - 10px);
+  width: 100%;
+  max-width: 1120px;
+  margin: 5px;
+  box-shadow: $boxshadow;
+  background-color: $background;
+}
+
+
 /* Sections */
 @import 'sections/intro';
+@import 'sections/blog-link';
+@import 'sections/home-link';
 @import 'sections/contact';
 @import 'sections/portfolio';
+@import 'sections/post';

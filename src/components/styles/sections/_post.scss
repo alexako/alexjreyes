@@ -1,0 +1,29 @@
+.blog-container {
+    height: 100%;
+    overflow: auto;
+}
+
+.post-list-container {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(1,minmax(250px,650px));
+    justify-content: center;
+}
+
+.post-list {
+    margin: 1.5em 0;
+    padding: 1em;
+    box-shadow: $boxshadow;
+    color: snow;
+    background-color: $darkGrey-2;
+    transition: 0.2s all ease-in-out;
+
+    &:hover {
+        background-color: $darkGrey-hover;
+        box-shadow: $boxshadow-hover;
+    }
+}
+
+.post-body {
+    color: $blogBaseFontColor;
+}

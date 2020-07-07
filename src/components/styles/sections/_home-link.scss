@@ -1,0 +1,28 @@
+.home-link-container {
+    display: flex;
+    justify-content: center;
+    background-color: $background;
+    border-bottom: 1px solid #232323;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 99999;
+}
+
+.home-link {
+    color: $lightGrey;
+    font-family: $headerFontStack;
+    font-size: 1.8em;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 1.7em;
+
+    &__highlight {
+        color: $green;
+        transition: 0.3s color ease-in-out;
+    }
+
+    &__highlight:hover {
+        color: $orange;
+    }
+}

@@ -1,12 +1,43 @@
-@import url('https://fonts.googleapis.com/css?family=Lato|Montserrat:700');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap');
 
 
 $baseFontStack: 'Lato', sans-serif;
 $headerFontStack: 'Montserrat', sans-serif;
 
-$green: limegreen;
+$blogBaseFontColor: #dfdfdf;
+
+$shadow: #151515;
+$boxshadow: 0px 1px 3px $shadow;
+$boxshadow-hover: 0px 4px 6px $shadow;
+
+$background: #252525;
 $lightGrey: #dfdfdf;
 $grey: #8a8a8a;
 $darkGrey: #2a2a2a;
+$darkGrey-2: #383838;
+$darkGrey-hover: #3e3e3e;
 $highlightGrey: #9a9a9a;
-$hoverGrey: #3e3e3e;
+
+$green: #32CD32;	// Main Primary color */
+$green-1: #7FE77F;
+$green-2: #53D953;
+$green-3: #09C409;
+$green-4: #039403;
+
+$blue: #269B9B;	// Main Secondary color (1) */
+$blue-1: #71CECE;
+$blue-2: #44B2B2;
+$blue-3: #079393;
+$blue-4: #036F6F;
+
+$orange: #FF963E;	// Main Secondary color (2) */
+$orange-1: #FFC08C;
+$orange-2: #FFA962;
+$orange-3: #F5760C;
+$orange-4: #B95604;
+
+$red: #FF3E3E;	// Main Complement color */
+$red-1: #FF8C8C;
+$red-2: #FF6262;
+$red-3: #F50C0C;
+$red-4: #B90404;
