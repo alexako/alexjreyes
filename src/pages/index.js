@@ -28,7 +28,7 @@ const IndexPage = ({data}) => {
             />
 
             <Intro />
-            <Portfolio projects={projects}/>
+            {/* <Portfolio projects={projects}/> */}
         </Layout>
     )
 }
