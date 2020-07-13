@@ -39,9 +39,12 @@ a {
   height: calc(100vh - 10px);
   width: 100%;
   max-width: 1120px;
-  margin: 5px;
   box-shadow: $boxshadow;
   background-color: $background;
+
+  @include breakpoint('md') {
+    margin: 5px;
+  }
 }
 
 
