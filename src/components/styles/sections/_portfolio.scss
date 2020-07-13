@@ -1,6 +1,5 @@
 .portfolio {
   width: 100%;
-  text-align: center;
   h2 {
     font-size: 3em;
   }
@@ -14,20 +13,53 @@
     margin-top: 2em;
   }
 
-  &__project {
-    margin-bottom: 35vh;
-    h3 {
-      font-size: 2em;
+}
+
+.project {
+  position: relative;
+  padding: 1em;
+  height: 350px;
+
+  &__bg {
+    height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 0 1em;
+    overflow: hidden;
+    color: snow;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: background-color 0.2s;
+
+    h1 {
+      font-size: 2.5em;
+      font-weight: 700;
+      font-family: $headerFontStack;
+      margin-bottom: 0;
+      
       @include breakpoint(md) {
         font-size: 1.5em;
       }
     }
-    img {
-      height: 100%;
-      width: 100%;
+
+    span {
+      font-weight: 700;
+      font-family: $headerFontStack;
+      color: $lightGrey;
     }
     @include breakpoint(md) {
       margin-bottom: 5%;
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.5);
     }
   }
 }

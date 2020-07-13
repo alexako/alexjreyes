@@ -22,6 +22,7 @@ const IndexPage = (props) => {
             `angular`,
         ]}
       />
+      
       <div className="blog-container">
         <HomeLink />
         <div className="post-list-container">

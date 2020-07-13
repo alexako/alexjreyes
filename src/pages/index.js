@@ -47,6 +47,16 @@ export const query = graphql`
           frontmatter {
             date(formatString: "MMMM Do YYYY")
             title
+            image {
+              childImageSharp {
+                resize(width: 400, height: 400) {
+                  src
+                }
+                fluid(maxHeight: 300) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }
