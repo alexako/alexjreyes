@@ -31,19 +31,22 @@ a {
 
 .main-container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
 
 .box {
   position: relative;
-  height: calc(100vh - 10px);
+  height: calc(100vh - 30px);
   width: 100%;
   max-width: 1120px;
-  margin: 5px;
-  box-shadow: $boxshadow;
   background-color: $background;
-}
 
+  @include breakpoint('md') {
+    margin: 15px;
+  }
+}
 
 /* Sections */
 @import 'sections/intro';
