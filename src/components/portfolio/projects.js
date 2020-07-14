@@ -1,8 +1,7 @@
 import React from "react"
 
 const Projects = ({ projects, state }) => {
-  console.log(projects);
-  const p = projects.filter(p => {
+  const p = projects.props.filter(p => {
     const tags = p.node.frontmatter.tags.split(',')
     return tags.indexOf(state.filter) > -1 || state.filter === 'all'
   })
