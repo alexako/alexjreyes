@@ -1,6 +1,6 @@
 import React from "react"
-import { Link } from "gatsby"
 import Projects from "./projects";
+import { FaLaptopCode } from "react-icons/fa";
 
 class Portfolio extends React.Component {
   constructor(props) {
@@ -17,10 +17,8 @@ class Portfolio extends React.Component {
 
     return (
       <div className="portfolio">
-        <h1>
-          <i className="fab fa-twitter fa-3x" aria-hidden="true"></i>
-          Projects
-        </h1>
+        <div className="portfolio__icon"><FaLaptopCode /></div>
+        <h1>Projects</h1>
         <div className="portfolio__filters">
           <div className={"portfolio__filter-btn portfolio__filter-btn" + (this.state.filter === 'all' ? '--active' : '')}
               onClick={(e) => this.handleClick('all', e)}>All</div>

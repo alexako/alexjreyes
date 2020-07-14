@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import { FaGithubAlt, FaTwitter, FaLinkedinIn, FaEnvelope } from 'react-icons/fa';
 
 const Contact = ({ siteTitle }) => (
     <div className="contact">
@@ -9,7 +10,7 @@ const Contact = ({ siteTitle }) => (
             href="http://github.com/alexako/"
             target="_blank"
         >
-            <i className="fab fa-github-alt fa-3x" aria-hidden="true"></i>
+            <FaGithubAlt />
         </a>
         <a
             className="contact__link"
@@ -17,7 +18,7 @@ const Contact = ({ siteTitle }) => (
             href="https://twitter.com/kludgebot/"
             target="_blank"
         >
-            <i className="fab fa-twitter fa-3x" aria-hidden="true"></i>
+            <FaTwitter />
         </a>
         <a
             className="contact__link"
@@ -25,13 +26,13 @@ const Contact = ({ siteTitle }) => (
             href="https://linkedin.com/in/alexjreyes"
             target="_blank"
         >
-            <i className="fab fa-linkedin-in fa-3x" aria-hidden="true"></i>
+            <FaLinkedinIn />
         </a>
         <a
             className="contact__link"
             href="mailto:me@alexjreyes.com?subject=Hi, Alex!"
         >
-            <i className="far fa-envelope fa-3x" aria-hidden="true"></i>
+            <FaEnvelope />
         </a>
     </div>
 )
