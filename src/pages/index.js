@@ -8,7 +8,6 @@ import Portfolio from '../components/portfolio/portfolio'
 import { graphql } from "gatsby"
 
 const IndexPage = ({data}) => { 
-    console.log('data:', data)
     const projects = data.allMarkdownRemark.edges
     return (
         <Layout>
@@ -45,6 +44,7 @@ export const query = graphql`
           }
           excerpt(pruneLength: 250)
           frontmatter {
+            tags
             date(formatString: "MMMM Do YYYY")
             title
             image {

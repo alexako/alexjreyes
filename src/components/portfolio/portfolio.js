@@ -1,26 +1,41 @@
 import React from "react"
 import { Link } from "gatsby"
+import Projects from "./projects";
 
-const Portfolio = ({ projects }) => {
-  console.log('projects:', projects);
-  return (
-    <div className="portfolio">
-      {projects.map(({ node }, i) => (
-        <Link to={node.fields.slug} key={i} className="link" >
-          <div className="project">
-            <div className="project__bg"
-              style={{ backgroundImage: `url(${node.frontmatter.image.childImageSharp.fluid.src})` }}>
-              <div className="project__details">
-                <h1>{node.frontmatter.title}</h1>
-                <span>{node.frontmatter.date}</span>
-                <p>{node.excerpt}</p>
-              </div>
-            </div>
-          </div>
-        </Link>
-      ))}
-    </div>
-  )
+class Portfolio extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { filter: 'all' };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(filter, e) {
+    this.setState(state => ({ filter: filter }));
+  }
+
+  render() {
+
+    return (
+      <div className="portfolio">
+        <h1>
+          <i className="fab fa-twitter fa-3x" aria-hidden="true"></i>
+          Projects
+        </h1>
+        <div className="portfolio__filters">
+          <div className={"portfolio__filter-btn portfolio__filter-btn" + (this.state.filter === 'all' ? '--active' : '')}
+              onClick={(e) => this.handleClick('all', e)}>All</div>
+          <div className={"portfolio__filter-btn portfolio__filter-btn" + (this.state.filter === 'frontend' ? '--active' : '')}
+              onClick={(e) => this.handleClick('frontend', e)}>Frontend</div>
+          <div className={"portfolio__filter-btn portfolio__filter-btn" + (this.state.filter === 'backend' ? '--active' : '')}
+              onClick={(e) => this.handleClick('backend', e)}>Backend</div>
+          <div className={"portfolio__filter-btn portfolio__filter-btn" + (this.state.filter === 'machine learning' ? '--active' : '')}
+              onClick={(e) => this.handleClick('machine learning', e)}>Machine Learning</div>
+        </div>
+
+        <Projects projects={this.props.projects} state={this.state} />
+      </div>
+    )
+  }
 }
 
 export default Portfolio
