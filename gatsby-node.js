@@ -33,12 +33,12 @@ exports.createPortfolio = ({ actions, graphql }) => {
                     return reject(result.errors)
                 }
 
-                const blogTemplate = path.resolve('./src/templates/project-template.js');
+                const projectTemplate = path.resolve('./src/templates/project-template.js');
 
                 result.data.allMarkdownRemark.edges.forEach(({ node }) => {
                     createPage({
                         path: node.fields.slug,
-                        component: blogTemplate,
+                        component: projectTemplate,
                         context: {
                             slug: node.fields.slug,
                         }, // additional data can be passed via context
@@ -51,53 +51,53 @@ exports.createPortfolio = ({ actions, graphql }) => {
 }
 
 
-exports.createPages = ({ actions, graphql }) => {
-    const { createPage } = actions
+// exports.createPages = ({ actions, graphql }) => {
+//     const { createPage } = actions
 
-    const blogPostTemplate = path.resolve(`src/templates/blog-post.js`)
+//     const blogPostTemplate = path.resolve(`src/templates/blog-post.js`)
 
-    return new Promise((resolve, reject) => {
+//     return new Promise((resolve, reject) => {
 
-        resolve(graphql(`
-    {
-      allMarkdownRemark(
-        sort: { order: DESC, fields: [frontmatter___date] }
-        limit: 1000
-      ) {
-        edges {
-          node {
-              fields{
-                  slug
-              }
-            frontmatter {
-              title
-            }
-          }
-        }
-      }
-    }
-  `).then(result => {
-                if (result.errors) {
-                    console.log(result.errors)
-                    return reject(result.errors)
-                }
+//         resolve(graphql(`
+//     {
+//       allMarkdownRemark(
+//         sort: { order: DESC, fields: [frontmatter___date] }
+//         limit: 1000
+//       ) {
+//         edges {
+//           node {
+//               fields{
+//                   slug
+//               }
+//             frontmatter {
+//               title
+//             }
+//           }
+//         }
+//       }
+//     }
+//   `).then(result => {
+//                 if (result.errors) {
+//                     console.log(result.errors)
+//                     return reject(result.errors)
+//                 }
 
-                const blogTemplate = path.resolve('./src/templates/blog-post.js');
+//                 const blogTemplate = path.resolve('./src/templates/blog-post.js');
 
-                result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-                    createPage({
-                        path: node.fields.slug,
-                        component: blogTemplate,
-                        context: {
-                            slug: node.fields.slug,
-                        }, // additional data can be passed via context
-                    })
-                })
-                return
-            })
-        )
-    })
-}
+//                 result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+//                     createPage({
+//                         path: node.fields.slug,
+//                         component: blogTemplate,
+//                         context: {
+//                             slug: node.fields.slug,
+//                         }, // additional data can be passed via context
+//                     })
+//                 })
+//                 return
+//             })
+//         )
+//     })
+// }
 
 
 exports.onCreateNode = ({ node, getNode, actions }) => {

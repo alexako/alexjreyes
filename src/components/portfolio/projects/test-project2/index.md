@@ -3,6 +3,7 @@ title: Test Project 2
 description: This post is related to the gatsbyjs
 date: '2018-09-26'
 image: 'gatsby-astronaut.png'
+link: ''
 tags: frontend 
 ---
 
