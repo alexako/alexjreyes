@@ -29,12 +29,6 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     path: `${__dirname}/src/pages/`,
-    //   },
-    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -42,13 +36,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     path: `${__dirname}/src/pages`,
-    //     name: "pages",
-    //   },
-    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
