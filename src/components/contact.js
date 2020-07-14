@@ -1,29 +1,48 @@
-import PropTypes from "prop-types"
-import React from "react"
+import PropTypes from 'prop-types'
+import React from 'react'
+import { FaGithubAlt, FaTwitter, FaLinkedinIn, FaEnvelope } from 'react-icons/fa';
 
 const Contact = ({ siteTitle }) => (
-  <div className="contact">
-    <a className="contact__link" href="http://github.com/alexako/" target="_blank">
-      <i className="fab fa-github-alt fa-3x" aria-hidden="true"></i>
-    </a>
-    <a className="contact__link" href="https://twitter.com/kludgebot/" target="_blank">
-      <i className="fab fa-twitter fa-3x" aria-hidden="true"></i>
-    </a>
-    <a className="contact__link" href="https://linkedin.com/in/alexjreyes" target="_blank">
-      <i className="fab fa-linkedin-in fa-3x" aria-hidden="true"></i>
-    </a>
-    <a className="contact__link" href="mailto:me@alexjreyes.com?subject=Hi, Alex!">
-      <i className="far fa-envelope fa-3x" aria-hidden="true"></i>
-    </a>
-  </div>
+    <div className="contact">
+        <a
+            className="contact__link"
+            rel="noreferrer"
+            href="http://github.com/alexako/"
+            target="_blank"
+        >
+            <FaGithubAlt />
+        </a>
+        <a
+            className="contact__link"
+            rel="noreferrer"
+            href="https://twitter.com/kludgebot/"
+            target="_blank"
+        >
+            <FaTwitter />
+        </a>
+        <a
+            className="contact__link"
+            rel="noreferrer"
+            href="https://linkedin.com/in/alexjreyes"
+            target="_blank"
+        >
+            <FaLinkedinIn />
+        </a>
+        <a
+            className="contact__link"
+            href="mailto:me@alexjreyes.com?subject=Hi, Alex!"
+        >
+            <FaEnvelope />
+        </a>
+    </div>
 )
 
 Contact.propTypes = {
-  siteTitle: PropTypes.string,
+    siteTitle: PropTypes.string,
 }
 
 Contact.defaultProps = {
-  siteTitle: ``,
+    siteTitle: ``,
 }
 
 export default Contact

@@ -2,7 +2,12 @@
     text-align: center;
     margin: 0.5em;
     &__link {
-        font-size: 1em;
-        margin: 0 0.75em;
+        font-size: 3em;
+        margin: 0 0.15em;
+        transition: 0.3s color ease-in-out;
+    }
+
+    &__link:hover {
+        color: $orange;
     }
 }

@@ -1,34 +1,104 @@
 .portfolio {
-    width: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__icon {
+    color: $green;
+    font-size: 3em;
+  }
+
+  h1 {
+    margin: 0;
+    font-family: $headerFontStack;
+    color: $green;
+  }
+
+  i {
     text-align: center;
-    h2 {
-      font-size: 3em;
-    }
-    i {
-      text-align: center;
-    }
   }
   
-  #projects {
-    @include breakpoint(md) {
-      display: grid;
-      grid-template-columns: 33% 33% 33%;
-      margin-top: 2em;
-    }
-    .project {
-      margin-bottom: 35vh;
-      h3 {
-        font-size: 2em;
-        @include breakpoint(md) {
-          font-size: 1.5em;
-        }
-      }
-      img {
-        height: 100%;
-        width: 100%;
-      }
+  &__filters {
+    display: flex;
+  }
+
+  &__filter-btn {
+    cursor: pointer;
+    padding: 0.5em 0;
+    border-bottom: 2px solid $lightGrey;
+    margin: 0.25em;
+    color: $lightGrey;
+    font-size: 1.2em;
+    font-weight: 700;
+    font-family: $headerFontStack;
+    text-transform: uppercase;
+    user-select: none;
+    opacity: 0.5;
+    @include transition(0.3s)
+  }
+
+  &__filter-btn:hover {
+    background-color: $darkGrey-hover;
+  }
+
+  &__filter-btn--active {
+    opacity: 1;
+  }
+}
+
+.projects {
+  max-width: 950px;
+}
+
+.project {
+  position: relative;
+  padding: 1em;
+  height: 350px;
+
+  &__bg {
+    height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 0 50% 0 1em;
+    overflow: hidden;
+    color: snow;
+    font-weight: 700;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: background-color 0.2s;
+
+    h1 {
+      font-size: 2.5em;
+      font-weight: 700;
+      color: snow;
+      font-family: $headerFontStack;
+      margin-bottom: 0;
+      
       @include breakpoint(md) {
-        margin-bottom: 5%;
+        font-size: 1.5em;
       }
+    }
+
+    span {
+      font-weight: 700;
+      font-family: $headerFontStack;
+      color: $lightGrey;
+    }
+    @include breakpoint(md) {
+      margin-bottom: 5%;
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.6);
     }
   }
+}
