@@ -38,7 +38,7 @@ class Portfolio extends React.Component {
               onClick={(e) => this.handleClick('machine learning', e)}>Machine Learning</div>
         </div>
 
-        <Projects projects={this.props.projects} state={this.state} />
+        <Projects projects={this.props} state={this.state} />
       </div>
     )
   }
