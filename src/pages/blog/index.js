@@ -22,7 +22,7 @@ const IndexPage = (props) => {
             `angular`,
         ]}
       />
-      
+
       <div className="blog-container">
         <HomeLink />
         <div className="post-list-container">
@@ -43,21 +43,21 @@ const IndexPage = (props) => {
 
 export default IndexPage;
 
-export const listQuery = graphql`
-  query ListQuery {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
-      edges {
-        node {
-          fields{
-            slug
-          }
-          excerpt(pruneLength: 250)
-          frontmatter {
-            date(formatString: "MMMM Do YYYY")
-            title
-          }
-        }
-      }
-    }
-  }
-`
+// export const listQuery = graphql`
+//   query ListQuery {
+//     allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+//       edges {
+//         node {
+//           fields{
+//             slug
+//           }
+//           excerpt(pruneLength: 250)
+//           frontmatter {
+//             date(formatString: "MMMM Do YYYY")
+//             title
+//           }
+//         }
+//       }
+//     }
+//   }
+// `

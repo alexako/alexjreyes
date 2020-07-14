@@ -69,10 +69,11 @@
     flex-direction: column;
     justify-content: center;
     height: 100%;
-    padding: 0 1em;
+    padding: 0 50% 0 1em;
     overflow: hidden;
     color: snow;
-    background-color: rgba(0, 0, 0, 0.6);
+    font-weight: 700;
+    background-color: rgba(0, 0, 0, 0.4);
     transition: background-color 0.2s;
 
     h1 {
@@ -97,7 +98,7 @@
     }
 
     &:hover {
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.6);
     }
   }
 }

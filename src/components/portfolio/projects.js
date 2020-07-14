@@ -10,7 +10,7 @@ const Projects = ({ projects, state }) => {
   return (
     <div className="projects box">
       {p.map(({ node }, i) => (
-        <a href={node.frontmatter.link} key={i} className="link" target="_blank">
+        <a href={node.frontmatter.link} key={i} className="link" target="_blank" rel="noreferrer">
           <div className="project">
             <div className="project__bg"
               style={{ backgroundImage: `url(${node.frontmatter.image.publicURL})` }}>
