@@ -5,8 +5,10 @@ import SEO from '../components/seo'
 
 import Intro from '../components/intro'
 import { graphql } from "gatsby"
+import Portfolio from '../components/portfolio/portfolio'
 
 const IndexPage = ({data}) => { 
+  const projects = data.allMarkdownRemark.edges;
     return (
         <Layout>
             <SEO
@@ -25,6 +27,7 @@ const IndexPage = ({data}) => {
             />
 
             <Intro />
+            <Portfolio props={projects}/>
         </Layout>
     )
 }
