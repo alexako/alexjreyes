@@ -30,7 +30,7 @@
     border-bottom: 2px solid $lightGrey;
     margin: 0.25em;
     color: $lightGrey;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: 700;
     font-family: $headerFontStack;
     text-transform: uppercase;
@@ -69,7 +69,7 @@
     flex-direction: column;
     justify-content: center;
     height: 100%;
-    padding: 0 50% 0 1em;
+    padding: 0 1em 0 1em;
     overflow: hidden;
     color: snow;
     font-weight: 700;
@@ -77,14 +77,18 @@
     transition: background-color 0.2s;
 
     h1 {
-      font-size: 2.5em;
+      font-size: 1.25em;
       font-weight: 700;
       color: snow;
       font-family: $headerFontStack;
       margin-bottom: 0;
       
-      @include breakpoint(md) {
-        font-size: 1.5em;
+      @include breakpoint(sm) {
+        font-size: 2.5em;
+      }
+
+      @include breakpoint(xs) {
+        font-size: 1.25em;
       }
     }
 
@@ -93,8 +97,13 @@
       font-family: $headerFontStack;
       color: $lightGrey;
     }
+
     @include breakpoint(md) {
       margin-bottom: 5%;
+    }
+
+    @include breakpoint(sm) {
+      padding: 0 50% 0 1em;
     }
 
     &:hover {

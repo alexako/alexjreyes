@@ -1,10 +1,12 @@
 import React from "react"
+import { Categories } from "../../shared/categories.enum"
 
 const Projects = ({ projects, state }) => {
   const p = projects.props.filter(p => {
     const tags = p.node.frontmatter.tags.split(',')
-    return tags.indexOf(state.filter) > -1 || state.filter === 'all'
+    return tags.indexOf(state.filter) > -1 || state.filter === Categories.ALL
   })
+
   return (
     <div className="projects box">
       {p.map(({ node }, i) => (
