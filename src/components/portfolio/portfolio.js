@@ -1,16 +1,17 @@
 import React from "react"
 import Projects from "./projects";
 import { FaLaptopCode } from "react-icons/fa";
+import { Categories } from "../../shared/categories.enum";
 
 class Portfolio extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = { filter: 'all' };
-    this.handleClick = this.handleClick.bind(this);
+    super(props)
+    this.state = { filter: Categories.ALL }
+    this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick(filter, e) {
-    this.setState(state => ({ filter: filter }));
+  handleClick(category, e) {
+    this.setState(state => ({ filter: category }))
   }
 
   render() {
@@ -20,22 +21,13 @@ class Portfolio extends React.Component {
         <div className="portfolio__icon"><FaLaptopCode /></div>
         <h1>Projects</h1>
         <div className="portfolio__filters">
-          <div className={"portfolio__filter-btn portfolio__filter-btn" + (this.state.filter === 'all' ? '--active' : '')}
-              role="filter"
-              onKeyDown={(e) => this.handleClick('all', e)}
-              onClick={(e) => this.handleClick('all', e)}>All</div>
-          <div className={"portfolio__filter-btn portfolio__filter-btn" + (this.state.filter === 'frontend' ? '--active' : '')}
-              role="filter"
-              onKeyDown={(e) => this.handleClick('frontend', e)}
-              onClick={(e) => this.handleClick('frontend', e)}>Frontend</div>
-          <div className={"portfolio__filter-btn portfolio__filter-btn" + (this.state.filter === 'backend' ? '--active' : '')}
-              role="filter"
-              onKeyDown={(e) => this.handleClick('backend', e)}
-              onClick={(e) => this.handleClick('backend', e)}>Backend</div>
-          <div className={"portfolio__filter-btn portfolio__filter-btn" + (this.state.filter === 'machine learning' ? '--active' : '')}
-              role="filter"
-              onKeyDown={(e) => this.handleClick('machine learning', e)}
-              onClick={(e) => this.handleClick('machine learning', e)}>Machine Learning</div>
+          {Object.keys(Categories).map((key, i) => (
+            <div className={"portfolio__filter-btn portfolio__filter-btn" + (this.state.filter === Categories[key] ? '--active' : '')}
+                key={i}
+                role="filter"
+                onKeyDown={(e) => this.handleClick(Categories[key], e)}
+                onClick={(e) => this.handleClick(Categories[key], e)}>{Categories[key]}</div>
+          ))}
         </div>
 
         <Projects projects={this.props} state={this.state} />
