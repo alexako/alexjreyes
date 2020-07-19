@@ -3,7 +3,8 @@ title: Skin Lesion Segmentation
 description: An implementation of the U-Net model 
 date: '2019-10-20'
 image: 'skin-lesion-segmentation.png'
-link: 'https://www.kaggle.com/alexako/cs200-1-u-net-skin-lesion-segmentation'
+linkProject: 'https://www.kaggle.com/alexako/cs200-1-u-net-skin-lesion-segmentation'
+linkCode: 'https://www.kaggle.com/alexako/cs200-1-u-net-skin-lesion-segmentation'
 tags: Machine Learning
 ---
 

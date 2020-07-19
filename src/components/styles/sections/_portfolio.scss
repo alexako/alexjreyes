@@ -114,4 +114,26 @@
       background-color: rgba(0, 0, 0, 0.6);
     }
   }
+
+  &__links {
+    display: flex;
+  }
+
+  &__link-btn {
+    padding: 0.5em;
+    background-color: $darkGrey;
+    border: 2px solid $green;
+    text-align: center;
+    color: $green;
+    font-weight: 700;
+    margin: 0.25em;
+    font-family: $headerFontStack;
+
+    @include transition(0.2s)
+
+    &:hover {
+      color: $orange;
+      border-color: $orange;
+    }
+  }
 }

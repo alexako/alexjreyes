@@ -3,7 +3,8 @@ title: Skin Lesion Classification
 description: An Ensemble of CNNs for Skin Lesion Classification
 date: '2019-10-20'
 image: 'skin-lesion-classification.png'
-link: 'https://www.kaggle.com/alexako/cs200-1-skin-lesion-segmentation-classification'
+linkProject: 'https://www.kaggle.com/alexako/cs200-1-skin-lesion-segmentation-classification'
+linkCode: 'https://www.kaggle.com/alexako/cs200-1-skin-lesion-segmentation-classification'
 tags: Machine Learning
 ---
 

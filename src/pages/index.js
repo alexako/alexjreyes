@@ -46,7 +46,8 @@ export const query = graphql`
           }
           excerpt(pruneLength: 250)
           frontmatter {
-            link
+            linkProject
+            linkCode
             tags
             date(formatString: "MMMM Do YYYY")
             title
