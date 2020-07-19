@@ -6,6 +6,19 @@ module.exports = {
     siteUrl: `https://alexako.com/`
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: "Alex Reyes",
+        short_name: "Alex Reyes",
+        start_url: "/",
+        background_color: "#2a2a2a",
+        theme_color: "#2a2a2a",
+        display: "standalone",
+        icon: "src/images/favicon.png",
+        crossOrigin: `use-credentials`,
+      }
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-sass`,

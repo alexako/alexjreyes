@@ -15,6 +15,7 @@ const IndexPage = ({data}) => {
                 title="Home"
                 keywords={[
                     `alex reyes`,
+                    `alex j reyes`,
                     `alex`,
                     `reyes`,
                     `alexako`,
@@ -23,6 +24,7 @@ const IndexPage = ({data}) => {
                     `developer`,
                     `javascript`,
                     `angular`,
+                    `react`,
                 ]}
             />
 
