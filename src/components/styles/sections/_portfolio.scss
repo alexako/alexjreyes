@@ -22,6 +22,10 @@
   
   &__filters {
     display: flex;
+
+    @include breakpoint(xxs) {
+      flex-direction: column;
+    }
   }
 
   &__filter-btn {

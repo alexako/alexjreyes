@@ -2,7 +2,7 @@
   "name": "alexjreyes",
   "private": true,
   "description": "My portfolio",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "author": "Alex Reyes <me@alexjreyes.com>",
   "dependencies": {
     "@fortawesome/fontawesome-pro": "^5.13.1",
