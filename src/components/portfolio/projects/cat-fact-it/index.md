@@ -2,7 +2,7 @@
 title: Cat Fact It
 description: A URL "Shortener" Microservice
 date: '2017-12-06'
-image: 'cat-fact-it.gif'
+image: 'cat-fact-it.png'
 link: 'http://cat-fact-it.alexjreyes.com/'
 tags: Backend
 ---
