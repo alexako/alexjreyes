@@ -1,4 +1,5 @@
 import React from "react"
+import FadeIn from 'react-fade-in';
 import { Categories } from "../../shared/categories.enum"
 
 const Projects = ({ projects, state }) => {
@@ -9,6 +10,7 @@ const Projects = ({ projects, state }) => {
 
   return (
     <div className="projects box">
+      <FadeIn delay="200">
       {p.map(({ node }, i) => (
         <div className="project" key={i}>
           <div className="project__bg"
@@ -25,6 +27,7 @@ const Projects = ({ projects, state }) => {
           </div>
         </div>
       ))}
+      </FadeIn>
     </div>
   )
 }
