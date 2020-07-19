@@ -5,6 +5,11 @@
     text-align: center;
     height: calc(100vh - 15vw);
 
+    @include breakpoint(lg) {
+        padding-top: 200px;
+        height: calc(100vh - 200px);
+    }
+
     &__header-lettering {
         color: $lightGrey;
         font-family: $headerFontStack;
