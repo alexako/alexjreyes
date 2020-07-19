@@ -10,18 +10,20 @@ const Projects = ({ projects, state }) => {
   return (
     <div className="projects box">
       {p.map(({ node }, i) => (
-        <a href={node.frontmatter.link} key={i} className="link" target="_blank" rel="noreferrer">
-          <div className="project">
-            <div className="project__bg"
-              style={{ backgroundImage: `url(${node.frontmatter.image.publicURL})` }}>
-              <div className="project__details">
-                <h1>{node.frontmatter.title}</h1>
-                <span>{node.frontmatter.date}</span>
-                <p>{node.excerpt}</p>
+        <div className="project" key={i}>
+          <div className="project__bg"
+            style={{ backgroundImage: `url(${node.frontmatter.image.publicURL})` }}>
+            <div className="project__details">
+              <h1>{node.frontmatter.title}</h1>
+              <span>{node.frontmatter.date}</span>
+              <p>{node.excerpt}</p>
+              <div className="project__links">
+                {node.frontmatter.linkProject ? <a className="project__link-btn" href={node.frontmatter.linkProject} target="_blank" rel="noreferrer">View project</a> : ''}
+                {node.frontmatter.linkCode ? <a className="project__link-btn" href={node.frontmatter.linkCode} target="_blank" rel="noreferrer">View code</a> : ''}
               </div>
             </div>
           </div>
-        </a>
+        </div>
       ))}
     </div>
   )

@@ -3,7 +3,8 @@ title: Random Quote Generator
 description: Displays random quotes from an API
 date: '2016-11-02'
 image: 'quote-generator.gif'
-link: 'https://codepen.io/alexako/full/jVNNdG'
+linkProject: 'https://codepen.io/alexako/full/jVNNdG'
+linkCode: 'https://codepen.io/alexako/pen/jVNNdG'
 tags: Frontend
 ---
 

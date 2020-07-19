@@ -3,7 +3,7 @@ title: PreviewSite Bot
 description: A Screenshot Reddit bot
 date: '2017-05-17'
 image: 'previewsite-bot.png'
-link: 'https://github.com/alexako/PreviewSiteBot'
+linkCode: 'https://github.com/alexako/PreviewSiteBot'
 tags: Backend
 ---
 

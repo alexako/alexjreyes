@@ -3,7 +3,8 @@ title: Weather Report
 description: A Simple Weather Report App
 date: '2016-11-03'
 image: 'weather-report.png'
-link: 'https://codepen.io/alexako/full/BQBObE'
+linkProject: 'https://codepen.io/alexako/full/BQBObE'
+linkCode: 'https://codepen.io/alexako/pen/BQBObE'
 tags: Frontend
 ---
 
