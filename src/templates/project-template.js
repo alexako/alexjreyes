@@ -1,23 +1,19 @@
 import React from 'react'
-import Layout from '../components/layout'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import HomeLink from '../components/home-link'
-import SEO from '../components/seo'
 
-const Project = (props) => {
-    const post = props.data.markdownRemark
-    const url = props.data.site.siteMetadata.siteUrl
-    const { title, description } = post.frontmatter
+const Project = ({ data }) => {
+    const project = data.markdownRemark
+    const { title } = project.frontmatter
 
     return (
             <div className="project-container">
                 <div>
                     <h1>{title}</h1>
-                    <Img fluid={post.frontmatter.image.publicURL} />
+                    <Img fluid={project.frontmatter.image.childImageSharp.fluid} />
                     <div
                         className="post-body"
-                        dangerouslySetInnerHTML={{ __html: post.html }}
+                        dangerouslySetInnerHTML={{ __html: project.html }}
                     />
                 </div>
             </div>
@@ -33,8 +29,13 @@ query ProjectQuery($slug: String!) {
       frontmatter {
        title
        description
+       date
        image {
-         publicURL
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
       }
     }
   }

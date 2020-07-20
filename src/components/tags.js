@@ -6,7 +6,8 @@ import { Tags } from '../shared/tags.enum'
 const TagsList = () => (
     <div className="tags-container">
         {Object.keys(Tags).map((t, i) => (
-            <Link to="/blog" key={i}>
+            // <Link to={"/projects/" + Tags[t].display} key={i}>
+            <Link to="/projects" key={i}>
                 <div className="tag" style={Tags[t].styles}>
                     <span>{Tags[t].display}</span>
                 </div>

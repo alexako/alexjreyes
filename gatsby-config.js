@@ -42,18 +42,12 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/components/portfolio/projects/`,
-      },
-    },
     'gatsby-plugin-offline',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/components/portfolio/projects/`,
-        name: "portfolio"
+        path: `${__dirname}/src/pages/projects`,
+        name: "projects"
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

@@ -6,6 +6,7 @@ import { Categories } from "../../shared/categories.enum";
 class Portfolio extends React.Component {
   constructor(props) {
     super(props)
+    this.projects = props.props
     this.state = { filter: Categories.ALL }
     this.handleClick = this.handleClick.bind(this)
   }
@@ -30,7 +31,7 @@ class Portfolio extends React.Component {
           ))}
         </div>
 
-        <Projects projects={this.props} state={this.state} />
+        <Projects projects={this.projects} state={this.state} />
       </div>
     )
   }

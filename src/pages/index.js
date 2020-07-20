@@ -6,6 +6,7 @@ import SEO from '../components/seo'
 import Intro from '../components/intro'
 import { graphql } from "gatsby"
 import Portfolio from '../components/portfolio/portfolio'
+import TagsList from '../components/tags'
 
 const IndexPage = ({data}) => { 
   const projects = data.allMarkdownRemark.edges;
@@ -30,6 +31,7 @@ const IndexPage = ({data}) => {
 
             <Intro />
             <Portfolio props={projects}/>
+            <TagsList />
         </Layout>
     )
 }
@@ -51,6 +53,9 @@ export const query = graphql`
             tags
             date(formatString: "MMMM Do YYYY")
             title
+            backgroundImage {
+              publicURL
+            }
             image {
               publicURL
             }
