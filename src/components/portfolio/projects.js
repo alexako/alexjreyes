@@ -8,8 +8,10 @@ const Projects = ({ projects, state }) => (
     <FadeIn delay="200">
       {projects
         .filter(project => {
+          const categories = project.node.frontmatter.category.split(',')
           const tags = project.node.frontmatter.tags.split(',')
-          return tags.indexOf(state.filter) > -1 || state.filter === Categories.ALL
+          return (categories.indexOf(state.filter) > -1 || state.filter === Categories.ALL)
+            && (state.tag ? tags.indexOf(state.tag) > -1 : true)
         })
         .map(({ node }, i) => (
           <div className="project" key={i}>
