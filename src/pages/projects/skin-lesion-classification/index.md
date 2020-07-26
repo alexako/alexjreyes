@@ -5,7 +5,8 @@ date: '2019-10-20'
 image: 'skin-lesion-classification.png'
 linkProject: 'https://www.kaggle.com/alexako/cs200-1-skin-lesion-segmentation-classification'
 linkCode: 'https://www.kaggle.com/alexako/cs200-1-skin-lesion-segmentation-classification'
-tags: Machine Learning
+category: Machine Learning
+tags: compsci,machine-learning,data-modeling,keras,python
 ---
 
 A thesis project that classifies dermoscopic images of skin lesions from the HAM10000 dataset. The ensemble consists of the VGG16 and ResNet50 models pretrained on the ImageNet dataset.

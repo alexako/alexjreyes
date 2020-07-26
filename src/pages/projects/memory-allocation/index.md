@@ -6,7 +6,8 @@ backgroundImage: 'memory-alloc.gif'
 image: '../../../images/default-bg.jpg'
 linkProject: 'https://codepen.io/alexako/full/abzjqjr'
 linkCode: 'https://codepen.io/alexako/pen/abzjqjr'
-tags: Frontend
+category: Frontend
+tags: javascript,data-modeling,ui,sass
 ---
 
 Simulation of memory allocation using the First-fit, Best-fit, and Worst-fit algorithms. Built in plain JavaScript.

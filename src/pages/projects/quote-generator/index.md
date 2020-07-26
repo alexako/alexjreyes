@@ -6,7 +6,8 @@ backgroundImage: 'quote-generator.gif'
 image: '../../../images/default-bg.jpg'
 linkProject: 'https://codepen.io/alexako/full/jVNNdG'
 linkCode: 'https://codepen.io/alexako/pen/jVNNdG'
-tags: Frontend
+category: Frontend
+tags: javascript,sass,ui
 ---
 
 A simple quote generator using an API from Storm Consultancy via AJAX requests.

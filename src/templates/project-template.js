@@ -44,5 +44,5 @@ query ProjectQuery($slug: String!) {
       siteUrl
     }
   }
-  }
+}
 `
