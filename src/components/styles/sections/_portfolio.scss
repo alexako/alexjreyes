@@ -2,8 +2,8 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  flex: 1 0 auto;
 
   &__icon {
     color: $green;
@@ -14,8 +14,7 @@
     margin: 0;
     font-size: 2em;
     font-family: $headerFontStack;
-    color: $green;
-    text-transform: uppercase;
+    color: $lightGrey;
   }
 
   i {
@@ -24,9 +23,25 @@
   
   &__filters {
     display: flex;
+    text-align: center;
+    justify-content: center;
+    background-color: #252525;
+    padding: 0.5em 0;
+
+    &--sticky {
+      flex-direction: row;
+      position: sticky;
+      top: 60px;
+      width: 100%;
+      z-index: 99999;
+    }
 
     @include breakpoint(xxs) {
+      top: 0;
+      padding: 0;
+      position: relative;
       flex-direction: column;
+      z-index: 1;
     }
   }
 
@@ -129,7 +144,7 @@
     margin: 0.25em;
     font-family: $headerFontStack;
 
-    @include transition(0.2s)
+    @include transition(0.2s);
 
     &:hover {
       color: $orange;

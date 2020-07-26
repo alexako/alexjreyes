@@ -1,0 +1,20 @@
+.tags-container {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    max-width: 950px;
+}
+
+.tag {
+    padding: 0.5em;
+    margin: 0.25em;
+    font-weight: 700;
+    color: snow;
+    background-color: $darkGrey-2;
+    min-width: 50px;
+    border-radius: 3px;
+
+    &:before {
+        content: '#';
+    }
+}
