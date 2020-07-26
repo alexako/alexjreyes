@@ -1,7 +1,6 @@
 import React from "react"
 import FadeIn from 'react-fade-in';
 import { Categories } from "../../shared/categories.enum"
-import { Link } from "gatsby";
 
 const Projects = ({ projects, state }) => (
   <div className="projects">

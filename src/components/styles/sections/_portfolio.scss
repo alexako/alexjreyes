@@ -128,7 +128,7 @@
     margin: 0.25em;
     font-family: $headerFontStack;
 
-    @include transition(0.2s)
+    @include transition(0.2s);
 
     &:hover {
       color: $orange;
