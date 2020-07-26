@@ -34,6 +34,7 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
 }
 
 .box {
@@ -52,6 +53,7 @@ a {
 @import 'sections/intro';
 @import 'sections/blog-link';
 @import 'sections/home-link';
+@import 'sections/navbar';
 @import 'sections/contact';
 @import 'sections/portfolio';
 @import 'sections/post';
