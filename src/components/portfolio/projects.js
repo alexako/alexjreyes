@@ -24,7 +24,7 @@ const Projects = ({ projects, state }) => (
                 <div className="project__links">
                   {node.frontmatter.linkProject ? <a className="project__link-btn" href={node.frontmatter.linkProject} target="_blank" rel="noreferrer">View project</a> : ''}
                   {node.frontmatter.linkCode ? <a className="project__link-btn" href={node.frontmatter.linkCode} target="_blank" rel="noreferrer">View code</a> : ''}
-                  <Link to={`/projects${node.fields.slug}`}> <div className="project__link-btn">Explore</div> </Link>
+                  {/* <Link to={`/projects${node.fields.slug}`}> <div className="project__link-btn">Explore</div> </Link> */}
                 </div>
               </div>
             </div>

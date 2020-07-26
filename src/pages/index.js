@@ -5,9 +5,8 @@ import SEO from '../components/seo'
 
 import Intro from '../components/intro'
 import Portfolio from '../components/portfolio/portfolio'
-import TagsList from '../components/tags'
 
-const IndexPage = ({data}) => { 
+const IndexPage = () => { 
     return (
         <Layout>
             <SEO
@@ -29,7 +28,6 @@ const IndexPage = ({data}) => {
 
             <Intro />
             <Portfolio />
-            <TagsList />
         </Layout>
     )
 }

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import Projects from "./projects";
 import { graphql, useStaticQuery } from "gatsby"
 import { FaLaptopCode } from "react-icons/fa";
 import { Categories } from "../../shared/categories.enum";
+import Projects from "./projects";
+import TagsList from '../tags';
 
 
 const Portfolio = (props) => {
@@ -35,11 +36,9 @@ const Portfolio = (props) => {
     }`
   )
 
-  console.log('data:', data)
-
   const initialState = {
     filter: Categories.ALL,
-    tag: props.pathContext ? props.pathContext.tag : '',
+    tag: props.pageContext ? props.pageContext.tag : '',
   }
 
   const [state, setState] = useState(initialState)
@@ -59,6 +58,7 @@ const Portfolio = (props) => {
       </div>
 
       <Projects projects={data.allMarkdownRemark.edges} state={state} />
+      <TagsList />
     </div>
   )
 }
