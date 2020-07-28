@@ -27,6 +27,7 @@ const IndexPage = () => {
             />
 
             <Intro />
+            <Contact />
             <Portfolio />
         </Layout>
     )
