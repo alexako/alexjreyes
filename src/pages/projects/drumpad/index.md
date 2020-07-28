@@ -9,4 +9,4 @@ category: Frontend
 tags: react,ui,sass,javascript
 ---
 
-From a project challenge of FreeCodeCamp, this simple drum pad simulate play audio when each button is clicked or the corresponding keyboard letter is pressed. Built in React with Hooks.
+From a project challenge of FreeCodeCamp, this simple drum pad simulator plays audio samples when each button is clicked or the corresponding keyboard letter is pressed. Built in React with Hooks.
