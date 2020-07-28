@@ -5,7 +5,6 @@ import SEO from '../components/seo'
 
 import Intro from '../components/intro'
 import Portfolio from '../components/portfolio/portfolio'
-import NavBar from '../components/navbar'
 
 const IndexPage = () => { 
     return (
