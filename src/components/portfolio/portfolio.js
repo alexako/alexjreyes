@@ -71,7 +71,7 @@ const Portfolio = (props) => {
             <div role="button"
                 className={"portfolio__filter-btn portfolio__filter-btn" + (state.filter === Categories[key] ? '--active' : '')}
                 key={i}
-                tabindex={i}
+                tabIndex={i}
                 onKeyDown={(e) => setState({ ...initialState, filter: Categories[key] }, e)}
                 onClick={(e) => setState({ ...initialState, filter: Categories[key] }, e)}>{Categories[key]}</div>
           ))}

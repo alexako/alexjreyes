@@ -28,6 +28,7 @@ const Intro = ({ siteTitle }) => (
             </a>
             or contact me through any of these platforms:
         </div>
+        <Contact />
     </div>
 )
 
