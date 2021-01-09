@@ -2,10 +2,10 @@
   "name": "alexjreyes",
   "private": true,
   "description": "My portfolio",
-  "version": "1.2.9",
+  "version": "1.2.10",
   "author": "Alex Reyes <me@alexjreyes.com>",
   "dependencies": {
-    "@fortawesome/fontawesome-pro": "^5.13.1",
+    "font-awesome": "^4.7.0",
     "gatsby": "^2.23.20",
     "gatsby-cli": "^2.12.58",
     "gatsby-image": "^2.4.12",
