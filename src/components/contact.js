@@ -14,7 +14,6 @@ const Contact = ({ siteTitle }) => (
         >
             <FaGithubAlt />
         </a>
-        <ReactTooltip className="tooltip" effect='solid' place={'bottom'} />
         <a
             className="contact__link"
             rel="noreferrer"
@@ -24,7 +23,6 @@ const Contact = ({ siteTitle }) => (
         >
             <FaFileDownload />
         </a>
-        <ReactTooltip className="tooltip" effect='solid' place={'bottom'} />
         <a
             className="contact__link"
             rel="noreferrer"
@@ -34,7 +32,6 @@ const Contact = ({ siteTitle }) => (
         >
             <FaLinkedinIn />
         </a>
-        <ReactTooltip className="tooltip" arrowColor={'#3e3e3e'} effect='solid' place={'bottom'} />
         <a
             className="contact__link"
             href="mailto:me@alexjreyes.com?subject=Hi, Alex!"
