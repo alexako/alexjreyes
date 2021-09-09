@@ -17,7 +17,7 @@ const Contact = ({ siteTitle }) => (
         <a
             className="contact__link"
             rel="noreferrer"
-            href="https://firebasestorage.googleapis.com/v0/b/alexjreyes-d592a.appspot.com/o/Alexander_Joseph_Reyes__Web_Developer.docx?alt=media&token=eaeec4d7-6b44-4da3-acb0-be5f81061c9d"
+            href="https://firebasestorage.googleapis.com/v0/b/alexjreyes-d592a.appspot.com/o/Alexander_Joseph_Reyes_-_Web_Developer.docx?alt=media&token=https://firebasestorage.googleapis.com/v0/b/alexjreyes-d592a.appspot.com/o/Alexander_Joseph_Reyes_-_Web_Developer.docx?alt=media&token=6c1b2c56-ec6b-483a-9ce1-1d3408982f23"
             target="_blank"
             data-tip="Download Resume"
         >
