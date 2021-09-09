@@ -2,7 +2,7 @@
   "name": "alexjreyes",
   "private": true,
   "description": "My portfolio",
-  "version": "1.2.11",
+  "version": "1.2.12",
   "author": "Alex Reyes <me@alexjreyes.com>",
   "dependencies": {
     "font-awesome": "^4.7.0",
