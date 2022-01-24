@@ -3,9 +3,9 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 const BlogLink = () => (
-    <Link to="/blog">
+    <Link to="https://practical-sinoussi-bc5de1.netlify.app/">
         <div className="ribbon">
-            <span>Blog</span>
+            <span>Hacker Actor</span>
         </div>
     </Link>
 )
