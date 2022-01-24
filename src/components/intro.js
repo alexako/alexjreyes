@@ -11,7 +11,13 @@ const Intro = ({ siteTitle }) => (
             and stuff.
         </h1>
         <div className="intro-container__content">
-            A bit of a jack of all trades and a master of puns. I enjoy building
+            A bit of a jack of all trades and a master of puns. I enjoy
+            <a
+                className="intro-container__content--link"
+                href="https://practical-sinoussi-bc5de1.netlify.app/"
+            >
+                building
+            </a>
             anything from web apps with
             <span className="intro-container__content--link">Angular</span>
             to silly Cat Fact APIs in
