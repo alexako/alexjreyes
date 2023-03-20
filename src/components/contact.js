@@ -17,7 +17,7 @@ const Contact = ({ siteTitle }) => (
         <a
             className="contact__link"
             rel="noreferrer"
-            href="https://firebasestorage.googleapis.com/v0/b/alexjreyes-d592a.appspot.com/o/Alexander_Reyes_-_Software_Engineer-profile.pdf?alt=media&token=fcddf364-6cae-4d13-b0f0-b6b211fb9859"
+            href="https://firebasestorage.googleapis.com/v0/b/alexjreyes-d592a.appspot.com/o/Alexander_Reyes_-_Software_Engineer-profile.pdf?alt=media&token=b88b703f-9dfe-43a4-ac89-5ac8c0b13a0a"
             target="_blank"
             data-tip="Download Resume"
         >
