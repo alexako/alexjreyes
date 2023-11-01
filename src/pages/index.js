@@ -6,7 +6,12 @@ import SEO from '../components/seo'
 import Intro from '../components/intro'
 import Portfolio from '../components/portfolio/portfolio'
 
+import { banner, welcomeMessage } from '../shared/ascii';
+
 const IndexPage = () => { 
+
+    console.log("%c" + banner, "color: lime", welcomeMessage);
+
     return (
         <Layout>
             <SEO
