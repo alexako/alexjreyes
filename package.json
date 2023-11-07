@@ -6,7 +6,7 @@
   "author": "Alex Reyes <me@alexjreyes.com>",
   "dependencies": {
     "font-awesome": "^4.7.0",
-    "gatsby": "^5.8.1",
+    "gatsby": "^5.9.1",
     "gatsby-cli": "^5.8.0",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-manifest": "^5.8.0",
