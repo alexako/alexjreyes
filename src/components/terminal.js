@@ -48,8 +48,8 @@ export default function Terminal() {
   const [currentPath] = useState("~");
   const inputRef = useRef(null);
   const terminalRef = useRef(null);
+  const hiddenSpanRef = useRef(null);
 
-  // Add CSS styles to document head (for demo, use real CSS for production)
   useEffect(() => {
     if (!document.getElementById("terminal-styles")) {
       const style = document.createElement("style");
@@ -58,6 +58,10 @@ export default function Terminal() {
       document.head.appendChild(style);
     }
   }, []);
+
+  useEffect(() => {
+    moveCursorToEnd();
+  }, [input]);
 
   // Command registry
   const commands = {
@@ -116,20 +120,16 @@ export default function Terminal() {
         setInput("");
       }
     }
-
-    moveCursorToEnd();
   }
 
   function moveCursorToEnd() {
     const cursorElement = document.getElementById("cursor");
-    const textLength = input.length;
-
-    let left = 165;
-    left += (textLength * 10);
-    cursorElement.style.left = `${left}px`;
-
+    const span = hiddenSpanRef.current;
+    if (span && cursorElement) {
+      const width = span.offsetWidth;
+      cursorElement.style.left = `${159 + width}px`; // 150px accounts for the prompt text
+    }
     inputRef.current?.focus();
-    console.log("MOVED:", left);
   }
 
   function clearTerminal() {
@@ -378,6 +378,20 @@ export default function Terminal() {
             autoComplete="off"
             spellCheck="false"
           />
+          <span
+            ref={hiddenSpanRef}
+            style={{
+              position: 'absolute',
+              visibility: 'hidden',
+              whiteSpace: 'pre',
+              fontFamily: 'inherit',
+              fontSize: 'inherit',
+              left: 0,
+              top: 0,
+              pointerEvents: 'none'
+            }}>
+            {input}
+          </span>
           <span id="cursor" className="cursor" style={{ display: document.activeElement === inputRef.current ? 'block' : 'block' }} />
         </div>
       </div>
