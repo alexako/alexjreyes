@@ -80,8 +80,6 @@ export default function Terminal() {
     skills: () => showSkills(),
     resume: () => showResume(),
     clear: () => clearTerminal(),
-    // ... fun commands (implement as needed)
-    // Example:
     joke: () => addOutput("Why do programmers prefer dark mode? Because light attracts bugs!", "info"),
   };
 
