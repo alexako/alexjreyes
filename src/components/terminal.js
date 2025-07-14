@@ -112,9 +112,9 @@ export default function Terminal() {
     const [cmd, ...args] = command.split(" ");
     const getRandomElement = arr => arr[Math.floor(Math.random() * arr.length)];
 
-    if (command.trim().includes('kludge')) {
+    if (command.includes('kludge')) {
         addOutput(`bash: ${cmd}: command not found`, "error");
-        if (command.trim().includes('sudo')) {
+        if (command.includes('sudo')) {
           addOutput(
             "Yeah... I'd try that too, but this is not a root access problem. I seriously don't know where he is.",
             "error"
@@ -147,6 +147,11 @@ export default function Terminal() {
         `${getRandomElement(forkBombErrorMsgs)}`,
         "warning"
       );
+      return;
+    }
+
+    if (command.includes('ls projects')) {
+      commands['projects'](args);
       return;
     }
 
@@ -237,6 +242,10 @@ export default function Terminal() {
   }
 
   function listFiles(args) {
+    if (args.includes("secrets/")) {
+      addOutput("Nice, but I don't have any secrets. 🎉\nEaster egg #1: I regularly wonder what animals are thinking.", "success");
+      return;
+    }
     let output = "total 8\n";
     files.forEach(file => {
       const permissions = file.type === "directory" ? "drwxr-xr-x" : "-rw-r--r--";
@@ -258,7 +267,7 @@ export default function Terminal() {
       "contact.txt": () => showContact(),
       "skills.json": () => showSkills(),
       "resume.pdf": () => addOutput("Error: Cannot display binary file. Try \"resume\" command instead.", "error"),
-      ".hidden": () => addOutput("You found the hidden file! 🎉\nEaster egg #1: I once spent 3 hours debugging a script only to realize I had a typo in the shebang line.\n#justdevthings", "success"),
+      ".hidden": () => addOutput("You found the hidden file! 🎉\nEaster egg #2: I once spent 3 hours debugging a script only to realize I had a typo in the shebang line.\n#justdevthings", "success"),
       "coffee_log.txt": () => addOutput([
         "Coffee consumption log:",
         "09:00 - Espresso (double shot)",
@@ -268,7 +277,21 @@ export default function Terminal() {
         "19:20 - Decaf (just kidding, more espresso)",
         "",
         "Status: Sufficiently caffeinated ☕"
-      ].join("\n"), "info")
+      ].join("\n"), "info"),
+      "drumpad.js": () => addOutput([
+        "Drumpad:",
+          "July 25th 2020",
+          "From a project challenge of FreeCodeCamp, this simple drum pad simulator plays audio samples when each button is clicked or the corresponding keyboard letter is pressed. Built in React with Hooks."
+      ].join("\n"), "info"),
+      "memory-sim": () => addOutput("Just scroll down. I'm not coding a whole redirection function for all of these.", "error"),
+      "portfolio-v2": () => addOutput("Just scroll down. I'm not coding a whole redirection function for all of these.", "error"),
+      "skin-classifier": () => addOutput("Just scroll down. I'm not coding a whole redirection function for all of these.", "error"),
+      "autobot": () => addOutput("Just scroll down. I'm not coding a whole redirection function for all of these.", "error"),
+      "catfact-api": () => addOutput("Just scroll down. I'm not coding a whole redirection function for all of these.", "error"),
+      "previewbot": () => addOutput("Just scroll down. I'm not coding a whole redirection function for all of these.", "error"),
+      "simon-game": () => addOutput("Just scroll down. I'm not coding a whole redirection function for all of these.", "error"),
+      "weather-app": () => addOutput("Just scroll down. I'm not coding a whole redirection function for all of these.", "error"),
+      "quote-gen": () => addOutput("Just scroll down. I'm not coding a whole redirection function for all of these.", "error"),
     };
     if (fileContents[filename]) {
       fileContents[filename]();
@@ -294,10 +317,10 @@ export default function Terminal() {
       "🌤️ weather-app     - Geolocation weather reporter",
       "💭 quote-gen       - Random quote generator",
       "",
-      "Projects shown on the main page are just the highlights.",
-      "Use this terminal to explore the full archive!",
+      "Projects shown in the terminal are just the highlights.",
+      "Scroll down to explore the full archive!",
       "",
-      "Type: cat <project-name> for detailed specs and demos"
+      "Type: cat <project-name> for detailed snarky remarks"
     ].join("\n"), "info");
   }
 
