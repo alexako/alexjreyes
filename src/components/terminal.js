@@ -3,14 +3,14 @@ import React, { useRef, useState, useEffect } from "react";
 
 // You may move this to a CSS/SCSS file or use styled-components if preferred.
 const terminalStyles = `
-.terminal-container { font-family: 'Cascadia Code', 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Droid Sans Mono', monospace; background: #1e1e1e; border-radius: 8px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); border: 1px solid #3c3c3c; }
+.terminal-container { font-family: 'Cascadia Code', 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Droid Sans Mono', monospace; background: #1e1e1e; border-radius: 8px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); border: 1px solid #3c3c3c; margin: 1em; }
 .terminal-header { background: #2d2d30; padding: 8px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #3c3c3c; user-select: none; }
 .terminal-tab { display: flex; align-items: center; gap: 8px; background: #1e1e1e; padding: 6px 12px; border-radius: 4px 4px 0 0; border: 1px solid #3c3c3c; border-bottom: none; color: #cccccc; font-size: 13px; }
 .terminal-icon { width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; }
 .terminal-actions { display: flex; gap: 8px; }
 .action-button { width: 20px; height: 20px; border: none; background: transparent; color: #cccccc; cursor: pointer; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 14px; }
 .action-button:hover { background: #3c3c3c; }
-.terminal { background: #1e1e1e; color: #cccccc; padding: 16px; height: 400px; overflow-y: auto; font-size: 14px; line-height: 1.4; position: relative; }
+.terminal { background: #1e1e1e; color: #cccccc; padding: 16px; height: 400px; overflow-y: auto; font-size: 14px; line-height: 1.4; position: relative; text-align: left; }
 .output { white-space: pre-wrap; margin-bottom: 4px; word-wrap: break-word; }
 .output.prompt { color: #569cd6; font-weight: 500; }
 .output.error { color: #f14c4c; }
@@ -19,13 +19,12 @@ const terminalStyles = `
 .output.warning { color: #dcdcaa; }
 .input-line { display: flex; align-items: center; position: relative; margin-top: 8px; }
 .prompt-text { color: #4ec9b0; margin-right: 8px; font-weight: 500; user-select: none; }
-.input-field { background: transparent; border: none; color: #cccccc; font-family: inherit; font-size: inherit; outline: none; flex: 1; caret-color: #cccccc; }
-.cursor { background: #cccccc; width: 2px; height: 18px; animation: blink 1s infinite; position: absolute; left: 0;}
+.input-field { background: transparent; border: none; color: #cccccc; font-family: inherit; font-size: inherit; outline: none; flex: 1; caret-color: transparent; }
+.cursor { background: #cccccc; width: 8px; height: 18px; animation: blink 1s infinite; position: absolute; left: 150px;}
 @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
 `;
 
 const initialOutputs = [
-  { text: "Welcome to Alex's interactive portfolio terminal!", className: "comment" },
   { text: "Type 'help' for available commands or 'ls' to explore", className: "comment" },
   { text: "---", className: "" },
 ];
@@ -49,16 +48,6 @@ export default function Terminal() {
   const [currentPath] = useState("~");
   const inputRef = useRef(null);
   const terminalRef = useRef(null);
-
-  // Focus input on mount
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
-
-  // Scroll to bottom on output change
-  useEffect(() => {
-    terminalRef.current?.scrollTo(0, terminalRef.current.scrollHeight);
-  }, [outputs]);
 
   // Add CSS styles to document head (for demo, use real CSS for production)
   useEffect(() => {
@@ -127,6 +116,20 @@ export default function Terminal() {
         setInput("");
       }
     }
+
+    moveCursorToEnd();
+  }
+
+  function moveCursorToEnd() {
+    const cursorElement = document.getElementById("cursor");
+    const textLength = input.length;
+
+    let left = 165;
+    left += (textLength * 10);
+    cursorElement.style.left = `${left}px`;
+
+    inputRef.current?.focus();
+    console.log("MOVED:", left);
   }
 
   function clearTerminal() {
@@ -146,10 +149,7 @@ export default function Terminal() {
       "resume      - View formatted resume",
       "clear       - Clear the terminal",
       "",
-      "Fun commands:",
-      "joke        - Programming humor",
-      "",
-      "Pro tip: Use tab for autocomplete and ↑↓ for command history!"
+      "Pro tip: Use ↑↓ for command history!"
     ].join("\n"), "info");
   }
 
@@ -158,7 +158,7 @@ export default function Terminal() {
       "About Alex - The Extended Cut",
       "",
       "I’m a full-stack developer who gets genuinely excited about solving problems with code.",
-      "Whether it’s building web apps that don’t suck, APIs that actually work, or robots that (mostly) don’t fall over - I’m all about creating things that matter.",
+      "Whether it’s building web apps that don’t suck, APIs that actually work, or robots that (mostly) don’t fall over - I’m all about creating things that matter or don't.",
       "",
       "When I’m not staring at screens:",
       "• Probably still staring at screens (let’s be honest)",
@@ -269,12 +269,12 @@ export default function Terminal() {
       '    "learning": ["Swift", "Kotlin"]',
       '  },',
       '  "frontend": {',
-      '    "frameworks": ["React", "Angular", "Vue"],',
+      '    "frameworks": ["React", "Angular", "Salesforce"],',
       '    "styling": ["CSS3", "Sass", "Tailwind", "Styled Components"],',
       '    "tools": ["Webpack", "Vite", "Storybook"]',
       '  },',
       '  "backend": {',
-      '    "runtime": ["Node.js", "Express", "Fastify"],',
+      '    "runtime": ["Node.js", "Express", "Python", "Django"],',
       '    "databases": ["PostgreSQL", "MongoDB", "Redis"],',
       '    "apis": ["REST", "GraphQL", "gRPC"]',
       '  },',
@@ -295,7 +295,6 @@ export default function Terminal() {
       '    "Technical mentoring",',
       '    "Coffee brewing"',
       '  ],',
-      '  "certifications": "AWS Certified Developer",',
       '  "side_quest": "Currently learning Rust because why not?"',
       '}'
     ].join("\n"), "info");
@@ -307,11 +306,11 @@ export default function Terminal() {
       "════════════════════════════════════════════════",
       "🎯 EXPERIENCE",
       "════════════════════════════════════════════════",
-      "Senior Full Stack Developer | TechCorp",
-      "2022 - Present",
-      "• Led microservices architecture serving 1M+ daily users",
-      "• Reduced page load times by 60% through React optimization",
-      "• Mentored 5 junior developers (they’re all better than me now"
+      "Software Engineer | State Farm",
+      "2021 - Present",
+      "• Spearheaded microservices architecture migration",
+      "• Reduced page load times by 60% through Angular optimization",
+      "• Mentored junior developers (they’re all better than me now)"
     ].join("\n"), "info");
   }
 
@@ -379,7 +378,7 @@ export default function Terminal() {
             autoComplete="off"
             spellCheck="false"
           />
-          <span className="cursor" style={{ display: document.activeElement === inputRef.current ? 'none' : 'block' }} />
+          <span id="cursor" className="cursor" style={{ display: document.activeElement === inputRef.current ? 'block' : 'block' }} />
         </div>
       </div>
     </div>

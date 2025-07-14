@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import Contact from './contact'
+import Terminal from './terminal'
 
 const Intro = ({ siteTitle }) => (
     <div className="intro-container box">
@@ -35,6 +36,7 @@ const Intro = ({ siteTitle }) => (
             or contact me through any of these platforms:
         </div>
         <Contact />
+        <Terminal />
     </div>
 )
 

@@ -5,7 +5,6 @@ import SEO from '../components/seo'
 
 import Intro from '../components/intro'
 import Portfolio from '../components/portfolio/portfolio'
-import Terminal from '../components/terminal'
 
 import { banner, welcomeMessage } from '../shared/ascii'
 
@@ -33,7 +32,6 @@ const IndexPage = () => {
             />
 
             <Intro />
-            <Terminal />
             <Portfolio />
         </Layout>
     )
