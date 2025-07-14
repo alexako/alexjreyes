@@ -83,6 +83,26 @@ export default function Terminal() {
     joke: () => addOutput("Why do programmers prefer dark mode? Because light attracts bugs!", "info"),
   };
 
+  const sudoErrorMsgs = [
+    "Come on, dude. sudo? The only thing you have root access to is disappointment.",
+    "Sudo privileges? Sorry, the only thing you’re authorized to break here is the fourth wall.",
+    "Oh, you want sudo? How adorable. On this terminal, everyone's a mere mortal.",
+    "Requesting sudo... Elevating your privileges to 'delusional'.",
+    "Sudo access? Please. The only thing you have root access to here is your own disappointment."
+  ];
+
+  const rmrfErrorMsgs = [
+    "'rm -rf /'? Nice try, but this isn't my first rodeo. Maybe go outside and touch grass instead?",
+    "Attempting self-destruction? Sorry, this terminal has a strong survival instinct.",
+    "Bold move! If I actually obeyed 'rm -rf /', you'd be staring at an existential void right now. Luckily, I'm more responsible than that.",
+    "Attempting 'rm -rf /'? Bold move. Sadly, this terminal values its existence more than you do.",
+  ];
+
+  const forkBombErrorMsgs = [
+    "Trying a fork bomb? Good news: I’m immune to shenanigans. Bad news: You wasted a perfectly good prank.",
+    "Your attempt to crash me has been noted."
+  ];
+
   function addOutput(text, className = "") {
     setOutputs((prev) => [...prev, { text, className }]);
   }
@@ -90,6 +110,46 @@ export default function Terminal() {
   function handleCommand(command) {
     addOutput(`alex@portfolio:${currentPath}$ ${command}`, "prompt");
     const [cmd, ...args] = command.split(" ");
+    const getRandomElement = arr => arr[Math.floor(Math.random() * arr.length)];
+
+    if (command.trim().includes('kludge')) {
+        addOutput(`bash: ${cmd}: command not found`, "error");
+        if (command.trim().includes('sudo')) {
+          addOutput(
+            "Yeah... I'd try that too, but this is not a root access problem. I seriously don't know where he is.",
+            "error"
+          );
+          return;
+        }
+
+      addOutput("Well, this is embarrassing. Can't seem to find him anywhere. Where did that little mutt go?", "error");
+      return;
+    }
+
+    if (command.trim().includes('rm -rf')) {
+      addOutput(
+        `${getRandomElement(rmrfErrorMsgs)} ${command.trim().startsWith('sudo') ? "Also, sudo? The only thing you have root access to is disappointment." : ""}`,
+        "warning"
+      );
+      return;
+    }
+
+    if (command.trim().includes('sudo')) {
+      addOutput(
+        `${getRandomElement(sudoErrorMsgs)}`,
+        "warning"
+      );
+      return;
+    }
+
+    if (command.trim().includes(':(){ :|:& };:')) {
+      addOutput(
+        `${getRandomElement(forkBombErrorMsgs)}`,
+        "warning"
+      );
+      return;
+    }
+
     if (commands[cmd]) {
       commands[cmd](args);
     } else {
