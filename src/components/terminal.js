@@ -60,6 +60,12 @@ export default function Terminal() {
   }, []);
 
   useEffect(() => {
+    if (terminalRef.current) {
+      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+    }
+  }, [outputs, input]);
+
+  useEffect(() => {
     moveCursorToEnd();
   }, [input]);
 
