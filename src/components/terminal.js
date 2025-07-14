@@ -479,7 +479,7 @@ export default function Terminal() {
             }}>
             {input}
           </span>
-          <span id="cursor" className="cursor" style={{ display: document.activeElement === inputRef.current ? 'block' : 'block' }} />
+          <span id="cursor" className="cursor" style={{ display: (typeof document !== 'undefined' && document.activeElement === inputRef.current) ? 'block' : 'block' }} />
         </div>
       </div>
     </div>
