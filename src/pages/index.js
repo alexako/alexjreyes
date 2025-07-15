@@ -6,7 +6,7 @@ import SEO from '../components/seo'
 import Intro from '../components/intro'
 import Portfolio from '../components/portfolio/portfolio'
 
-import { banner, welcomeMessage } from '../shared/ascii';
+import { banner, welcomeMessage } from '../shared/ascii'
 
 const IndexPage = () => { 
 

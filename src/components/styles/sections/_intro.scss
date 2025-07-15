@@ -3,11 +3,10 @@
 .intro-container {
     padding-top: 15vw;
     text-align: center;
-    height: calc(100vh - 15vw);
+    height: 100%;
 
     @include breakpoint(lg) {
         padding-top: 200px;
-        height: calc(100vh - 200px);
     }
 
     &__header-lettering {
