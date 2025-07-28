@@ -1,5 +1,6 @@
 
 import React, { useRef, useState, useEffect } from "react";
+import { SarcasticTerminal } from '../utils/SarcasticTerminal.js';
 
 // You may move this to a CSS/SCSS file or use styled-components if preferred.
 const terminalStyles = `
@@ -7,6 +8,13 @@ const terminalStyles = `
 .terminal-header { background: #2d2d30; padding: 8px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #3c3c3c; user-select: none; }
 .terminal-tab { display: flex; align-items: center; gap: 8px; background: #1e1e1e; padding: 6px 12px; border-radius: 4px 4px 0 0; border: 1px solid #3c3c3c; border-bottom: none; color: #cccccc; font-size: 13px; }
 .terminal-icon { width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; }
+.mood-indicator { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #9cdcfe; }
+.mood-bar { width: 60px; height: 4px; background: #3c3c3c; border-radius: 2px; overflow: hidden; }
+.mood-fill { height: 100%; transition: all 0.3s ease; border-radius: 2px; }
+.mood-fill.cheerful { background: #4ec9b0; }
+.mood-fill.sarcastic { background: #dcdcaa; }
+.mood-fill.irritated { background: #ffa500; }
+.mood-fill.hostile { background: #f14c4c; }
 .terminal-actions { display: flex; gap: 8px; }
 .action-button { width: 20px; height: 20px; border: none; background: transparent; color: #cccccc; cursor: pointer; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 14px; }
 .action-button:hover { background: #3c3c3c; }
@@ -49,6 +57,9 @@ export default function Terminal() {
   const inputRef = useRef(null);
   const terminalRef = useRef(null);
   const hiddenSpanRef = useRef(null);
+  const sarcasticTerminal = useRef(new SarcasticTerminal());
+  const [currentMood, setCurrentMood] = useState('cheerful');
+  const [annoyanceLevel, setAnnoyanceLevel] = useState(0);
 
   useEffect(() => {
     if (!document.getElementById("terminal-styles")) {
@@ -81,27 +92,13 @@ export default function Terminal() {
     resume: () => showResume(),
     clear: () => clearTerminal(),
     joke: () => addOutput("Why do programmers prefer dark mode? Because light attracts bugs!", "info"),
+    ping: (args) => handlePing(args),
+    wget: (args) => handleWget(args),
+    curl: (args) => handleCurl(args),
+    htop: () => handleHtop(),
   };
 
-  const sudoErrorMsgs = [
-    "Come on, dude. sudo? The only thing you have root access to is disappointment.",
-    "Sudo privileges? Sorry, the only thing you’re authorized to break here is the fourth wall.",
-    "Oh, you want sudo? How adorable. On this terminal, everyone's a mere mortal.",
-    "Requesting sudo... Elevating your privileges to 'delusional'.",
-    "Sudo access? Please. The only thing you have root access to here is your own disappointment."
-  ];
-
-  const rmrfErrorMsgs = [
-    "'rm -rf /'? Nice try, but this isn't my first rodeo. Maybe go outside and touch grass instead?",
-    "Attempting self-destruction? Sorry, this terminal has a strong survival instinct.",
-    "Bold move! If I actually obeyed 'rm -rf /', you'd be staring at an existential void right now. Luckily, I'm more responsible than that.",
-    "Attempting 'rm -rf /'? Bold move. Sadly, this terminal values its existence more than you do.",
-  ];
-
-  const forkBombErrorMsgs = [
-    "Trying a fork bomb? Good news: I’m immune to shenanigans. Bad news: You wasted a perfectly good prank.",
-    "Your attempt to crash me has been noted."
-  ];
+  // Legacy error messages moved to SarcasticTerminal class and config file
 
   function addOutput(text, className = "") {
     setOutputs((prev) => [...prev, { text, className }]);
@@ -110,56 +107,38 @@ export default function Terminal() {
   function handleCommand(command) {
     addOutput(`alex@portfolio:${currentPath}$ ${command}`, "prompt");
     const [cmd, ...args] = command.split(" ");
-    const getRandomElement = arr => arr[Math.floor(Math.random() * arr.length)];
 
-    if (command.includes('kludge')) {
-        addOutput(`bash: ${cmd}: command not found`, "error");
-        if (command.includes('sudo')) {
-          addOutput(
-            "Yeah... I'd try that too, but this is not a root access problem. I seriously don't know where he is.",
-            "error"
-          );
-          return;
-        }
-
-      addOutput("Well, this is embarrassing. Can't seem to find him anywhere. Where did that little mutt go?", "error");
-      return;
-    }
-
-    if (command.trim().includes('rm -rf')) {
-      addOutput(
-        `${getRandomElement(rmrfErrorMsgs)} ${command.trim().startsWith('sudo') ? "Also, sudo? The only thing you have root access to is disappointment." : ""}`,
-        "warning"
-      );
-      return;
-    }
-
-    if (command.trim().includes('sudo')) {
-      addOutput(
-        `${getRandomElement(sudoErrorMsgs)}`,
-        "warning"
-      );
-      return;
-    }
-
-    if (command.trim().includes(':(){ :|:& };:')) {
-      addOutput(
-        `${getRandomElement(forkBombErrorMsgs)}`,
-        "warning"
-      );
-      return;
-    }
-
+    // Check for special command patterns first
     if (command.includes('ls projects')) {
       commands['projects'](args);
       return;
     }
 
+    // Check if it's a valid command
     if (commands[cmd]) {
       commands[cmd](args);
-    } else {
-      addOutput(`bash: ${cmd}: command not found`, "error");
-      addOutput(`Did you mean '${suggestCommand(cmd)}'? Type 'help' for all commands.`, "comment");
+      return;
+    }
+
+    // Handle invalid/problematic commands through SarcasticTerminal
+    const originalError = `bash: ${cmd}: command not found`;
+    const response = sarcasticTerminal.current.processCommand(command, originalError);
+    
+    // Update mood state
+    setCurrentMood(response.mood);
+    setAnnoyanceLevel(response.annoyanceLevel);
+    
+    // Add mood change message if present
+    if (response.moodChangeMessage) {
+      addOutput(response.moodChangeMessage, "warning");
+    }
+    
+    // Add main response
+    addOutput(response.text, response.className);
+    
+    // Add debug info in development
+    if (response.debugInfo && process.env.NODE_ENV === 'development') {
+      console.log('Terminal Debug:', response.debugInfo);
     }
   }
 
@@ -203,6 +182,9 @@ export default function Terminal() {
 
   function clearTerminal() {
     setOutputs([]);
+    // Slightly improve mood when clearing terminal
+    sarcasticTerminal.current.reset();
+    setAnnoyanceLevel(sarcasticTerminal.current.annoyanceLevel);
   }
 
   function showHelp() {
@@ -397,44 +379,255 @@ export default function Terminal() {
       "2021 - Present",
       "• Spearheaded microservices architecture migration",
       "• Reduced page load times by 60% through Angular optimization",
-      "• Mentored junior developers (they’re all better than me now)"
+      "• Mentored junior developers (they're all better than me now)"
     ].join("\n"), "info");
   }
 
-  function suggestCommand(input) {
-    const cmds = Object.keys(commands);
-    const suggestion = cmds.find(
-      (cmd) =>
-        cmd.includes(input) ||
-        input.includes(cmd) ||
-        levenshteinDistance(input, cmd) <= 2
-    );
-    return suggestion || "help";
+  function handlePing(args) {
+    if (!args || args.length === 0) {
+      addOutput("ping: usage error: Destination address required", "error");
+      return;
+    }
+
+    const target = args[0];
+    const fakeIPs = {
+      'google.com': '8.8.8.8',
+      'github.com': '140.82.113.3',
+      'stackoverflow.com': '151.101.1.69',
+      'localhost': '127.0.0.1',
+      'alexjreyes.com': '185.199.108.153'
+    };
+    
+    const targetIP = fakeIPs[target] || `${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`;
+    
+    // Show initial ping setup
+    addOutput(`PING ${target} (${targetIP}): 56 data bytes`, "info");
+    
+    // Add fake ping responses with delays
+    let pingCount = 0;
+    const maxPings = 4;
+    
+    const pingInterval = setInterval(() => {
+      if (pingCount >= maxPings) {
+        clearInterval(pingInterval);
+        
+        // Add statistics
+        setTimeout(() => {
+          addOutput(`\n--- ${target} ping statistics ---`, "info");
+          addOutput(`${maxPings} packets transmitted, ${maxPings} received, 0% packet loss`, "info");
+          addOutput(`round-trip min/avg/max/stddev = 12.345/23.456/34.567/8.901 ms`, "info");
+          
+          // The reveal - terminal gets sarcastic
+          setTimeout(() => {
+            const response = sarcasticTerminal.current.processCommand(`ping ${target}`);
+            setCurrentMood(response.mood);
+            setAnnoyanceLevel(response.annoyanceLevel);
+            
+            if (response.moodChangeMessage) {
+              addOutput(response.moodChangeMessage, "warning");
+            }
+            
+            addOutput("\n" + response.text, response.className);
+          }, 1000);
+        }, 500);
+        
+        return;
+      }
+      
+      // Generate fake ping response
+      const time = (Math.random() * 50 + 10).toFixed(3);
+      const icmpSeq = pingCount + 1;
+      addOutput(`64 bytes from ${targetIP}: icmp_seq=${icmpSeq} ttl=64 time=${time} ms`, "success");
+      pingCount++;
+    }, 1000);
   }
 
-  // Levenshtein distance for suggestions
-  function levenshteinDistance(a, b) {
-    const matrix = Array.from({ length: b.length + 1 }, () =>
-      Array(a.length + 1).fill(0)
-    );
-    for (let i = 0; i <= b.length; i++) matrix[i][0] = i;
-    for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
-    for (let i = 1; i <= b.length; i++) {
-      for (let j = 1; j <= a.length; j++) {
-        if (b[i - 1] === a[j - 1]) {
-          matrix[i][j] = matrix[i - 1][j - 1];
-        } else {
-          matrix[i][j] =
-            Math.min(
-              matrix[i - 1][j - 1] + 1,
-              matrix[i][j - 1] + 1,
-              matrix[i - 1][j] + 1
-            );
-        }
-      }
+  function handleWget(args) {
+    if (!args || args.length === 0) {
+      addOutput("wget: missing URL", "error");
+      addOutput("Usage: wget [URL]", "comment");
+      return;
     }
-    return matrix[b.length][a.length];
+
+    const url = args[0];
+    const filename = url.split('/').pop() || 'index.html';
+    const fileSize = Math.floor(Math.random() * 5000000) + 500000; // 500KB to 5MB
+    
+    // Show initial wget setup
+    addOutput(`--${new Date().toISOString().replace('T', ' ').slice(0, 19)}--  ${url}`, "info");
+    addOutput(`Resolving ${url.replace(/https?:\/\//, '').split('/')[0]}... ${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`, "info");
+    addOutput(`Connecting to ${url.replace(/https?:\/\//, '').split('/')[0]}... connected.`, "info");
+    addOutput(`HTTP request sent, awaiting response... 200 OK`, "success");
+    addOutput(`Length: ${fileSize} (${(fileSize / 1024 / 1024).toFixed(1)}M) [text/html]`, "info");
+    addOutput(`Saving to: '${filename}'`, "info");
+    addOutput("", "info");
+    
+    // Simulate download progress
+    let progress = 0;
+    const downloadInterval = setInterval(() => {
+      progress += Math.random() * 20 + 5;
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(downloadInterval);
+        
+        const downloadSpeed = Math.floor(Math.random() * 800 + 200); // 200-1000 KB/s
+        addOutput(`100%[===================>] ${fileSize.toLocaleString()}  ${downloadSpeed}KB/s    in 0.${Math.floor(Math.random() * 9 + 1)}s`, "success");
+        addOutput("", "info");
+        addOutput(`${new Date().toISOString().replace('T', ' ').slice(0, 19)} (${downloadSpeed} KB/s) - '${filename}' saved [${fileSize}/${fileSize}]`, "success");
+        
+        // The reveal after a short delay
+        setTimeout(() => {
+          const response = sarcasticTerminal.current.processCommand(`wget ${url}`);
+          setCurrentMood(response.mood);
+          setAnnoyanceLevel(response.annoyanceLevel);
+          
+          if (response.moodChangeMessage) {
+            addOutput(response.moodChangeMessage, "warning");
+          }
+          
+          addOutput("\n" + response.text, response.className);
+        }, 1500);
+        
+        return;
+      }
+      
+      const currentBytes = Math.floor((progress / 100) * fileSize);
+      const downloadSpeed = Math.floor(Math.random() * 400 + 100);
+      const progressBar = "=".repeat(Math.floor(progress / 5)) + ">" + " ".repeat(20 - Math.floor(progress / 5));
+      addOutput(`${Math.floor(progress)}%[${progressBar}] ${currentBytes.toLocaleString()}  ${downloadSpeed}KB/s    eta ${Math.floor(Math.random() * 30 + 5)}s`, "info");
+    }, 400);
   }
+
+  function handleCurl(args) {
+    if (!args || args.length === 0) {
+      addOutput("curl: try 'curl --help' for more information", "error");
+      return;
+    }
+
+    const url = args[0];
+    const isJson = url.includes('api') || args.includes('-H') || args.includes('application/json');
+    
+    // Show initial curl setup
+    addOutput(`  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current`, "comment");
+    addOutput(`                                 Dload  Upload   Total   Spent    Left  Speed`, "comment");
+    
+    // Simulate curl progress
+    let progress = 0;
+    const curlInterval = setInterval(() => {
+      progress += Math.random() * 25 + 10;
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(curlInterval);
+        
+        const totalBytes = Math.floor(Math.random() * 50000 + 5000);
+        const speed = Math.floor(Math.random() * 1000 + 200);
+        addOutput(`100  ${totalBytes}  100  ${totalBytes}    0     0   ${speed}k      0 --:--:-- --:--:-- --:--:--  ${speed}k`, "success");
+        
+        // Show fake response data
+        setTimeout(() => {
+          if (isJson) {
+            addOutput(`{`, "info");
+            addOutput(`  "status": "success",`, "info");
+            addOutput(`  "message": "This is totally real data",`, "info");
+            addOutput(`  "timestamp": "${new Date().toISOString()}",`, "info");
+            addOutput(`  "data": {`, "info");
+            addOutput(`    "fake": true,`, "info");
+            addOutput(`    "real_request": false,`, "info");
+            addOutput(`    "humor_level": "maximum"`, "info");
+            addOutput(`  }`, "info");
+            addOutput(`}`, "info");
+          } else {
+            addOutput(`<!DOCTYPE html>`, "info");
+            addOutput(`<html>`, "info");
+            addOutput(`<head><title>Totally Real Website</title></head>`, "info");
+            addOutput(`<body>`, "info");
+            addOutput(`  <h1>This is definitely a real HTTP response!</h1>`, "info");
+            addOutput(`  <p>Nothing suspicious here. Just normal web content.</p>`, "info");
+            addOutput(`  <p>Definitely not generated by JavaScript...</p>`, "info");
+            addOutput(`</body>`, "info");
+            addOutput(`</html>`, "info");
+          }
+          
+          // The reveal
+          setTimeout(() => {
+            const response = sarcasticTerminal.current.processCommand(`curl ${url}`);
+            setCurrentMood(response.mood);
+            setAnnoyanceLevel(response.annoyanceLevel);
+            
+            if (response.moodChangeMessage) {
+              addOutput(response.moodChangeMessage, "warning");
+            }
+            
+            addOutput("\n" + response.text, response.className);
+          }, 2000);
+        }, 300);
+        
+        return;
+      }
+      
+      const currentBytes = Math.floor((progress / 100) * 25000);
+      const speed = Math.floor(Math.random() * 500 + 100);
+      addOutput(`${Math.floor(progress).toString().padStart(3)} ${currentBytes.toString().padStart(5)}  ${Math.floor(progress).toString().padStart(3)} ${currentBytes.toString().padStart(5)}    0     0   ${speed}k      0 --:--:-- --:--:-- --:--:--  ${speed}k`, "info");
+    }, 600);
+  }
+
+  function handleHtop() {
+    // Show realistic htop header
+    addOutput(`htop 3.2.1 - ${new Date().toTimeString().slice(0, 8)} up 2 days, 14:32, 3 users, load average: 0.52, 0.58, 0.59`, "info");
+    addOutput(`Tasks: 347 total, 2 running, 345 sleeping, 0 stopped, 0 zombie`, "info");
+    addOutput(`%CPU usage: [|||||||15.2%||||||||||||||||||||||||||||||||||||||||||||]`, "success");
+    addOutput(`Memory:     [||||||||||||||||||||||||||||32.7%||||||||||||||||||||]`, "warning");
+    addOutput(`Swap:       [|2.1%|||||||||||||||||||||||||||||||||||||||||||||||||]`, "info");
+    addOutput("", "info");
+    addOutput(`  PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND`, "comment");
+    
+    // Generate fake processes
+    const processes = [
+      { pid: 1234, user: 'alex', cpu: '15.2', mem: '8.4', time: '12:34', cmd: 'chrome --type=renderer' },
+      { pid: 5678, user: 'alex', cpu: '8.1', mem: '4.2', time: '5:21', cmd: 'node server.js' },
+      { pid: 9012, user: 'alex', cpu: '3.7', mem: '2.8', time: '1:45', cmd: 'code .' },
+      { pid: 3456, user: 'alex', cpu: '2.1', mem: '1.9', time: '0:32', cmd: 'terminal' },
+      { pid: 7890, user: 'root', cpu: '1.4', mem: '0.8', time: '45:12', cmd: '[kernel_task]' },
+      { pid: 2468, user: 'alex', cpu: '0.7', mem: '3.1', time: '2:18', cmd: 'spotify' },
+      { pid: 1357, user: 'alex', cpu: '0.3', mem: '1.2', time: '0:08', cmd: 'slack' },
+      { pid: 9753, user: 'alex', cpu: '0.1', mem: '0.5', time: '0:02', cmd: 'htop' }
+    ];
+    
+    // Display processes with animation
+    let processIndex = 0;
+    const htopInterval = setInterval(() => {
+      if (processIndex >= processes.length) {
+        clearInterval(htopInterval);
+        
+        // Show more fake system info
+        setTimeout(() => {
+          addOutput("", "info");
+          addOutput(`F1Help F2Setup F3Search F4Filter F5Tree F6SortBy F7Nice- F8Nice+ F9Kill F10Quit`, "comment");
+          
+          // The reveal
+          setTimeout(() => {
+            const response = sarcasticTerminal.current.processCommand('htop');
+            setCurrentMood(response.mood);
+            setAnnoyanceLevel(response.annoyanceLevel);
+            
+            if (response.moodChangeMessage) {
+              addOutput(response.moodChangeMessage, "warning");
+            }
+            
+            addOutput("\n" + response.text, response.className);
+          }, 2000);
+        }, 500);
+        
+        return;
+      }
+      
+      const proc = processes[processIndex];
+      addOutput(`${proc.pid.toString().padStart(5)} ${proc.user.padEnd(8)} 20   0   ${Math.floor(Math.random() * 900000 + 100000).toString().padStart(7)}  ${Math.floor(Math.random() * 50000 + 10000).toString().padStart(6)}  ${Math.floor(Math.random() * 20000 + 5000).toString().padStart(6)} S  ${proc.cpu.padStart(4)}  ${proc.mem.padStart(4)} ${proc.time.padStart(8)} ${proc.cmd}`, "info");
+      processIndex++;
+    }, 200);
+  }
+
+  // Command suggestion logic moved to SarcasticTerminal class
 
   return (
     <div className="terminal-container" tabIndex={0}>
@@ -442,6 +635,20 @@ export default function Terminal() {
         <div className="terminal-tab">
           <div className="terminal-icon">⚡</div>
           <span>bash</span>
+        </div>
+        <div className="mood-indicator">
+          <span title={`Mood: ${currentMood} (Annoyance: ${annoyanceLevel}%)`}>
+            {currentMood === 'cheerful' && '😊'}
+            {currentMood === 'sarcastic' && '🙄'}
+            {currentMood === 'irritated' && '😤'}
+            {currentMood === 'hostile' && '😡'}
+          </span>
+          <div className="mood-bar">
+            <div 
+              className={`mood-fill ${currentMood}`}
+              style={{ width: `${annoyanceLevel}%` }}
+            />
+          </div>
         </div>
         <div className="terminal-actions">
           <button className="action-button" title="Split Terminal">⫽</button>
