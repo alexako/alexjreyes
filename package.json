@@ -2,7 +2,7 @@
   "name": "alexjreyes",
   "private": true,
   "description": "My portfolio",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "author": "Alex Reyes <me@alexjreyes.com>",
   "dependencies": {
     "ajv": "^8.18.0",
