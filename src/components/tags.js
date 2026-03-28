@@ -19,8 +19,4 @@ TagsList.propTypes = {
     siteTitle: PropTypes.string,
 }
 
-TagsList.defaultProps = {
-    siteTitle: ``,
-}
-
 export default TagsList

@@ -663,7 +663,7 @@ export default function Terminal() {
   // Command suggestion logic moved to SarcasticTerminal class
 
   return (
-    <div className="terminal-container" tabIndex={0}>
+    <div className="terminal-container">
       <div className="terminal-header">
         <div className="terminal-tab">
           <div className="terminal-icon">⚡</div>
@@ -689,7 +689,7 @@ export default function Terminal() {
           <button className="action-button" title="Maximize">⬜</button>
         </div>
       </div>
-      <div className="terminal" id="terminal" ref={terminalRef} onClick={() => inputRef.current?.focus()}>
+      <div className="terminal" id="terminal" ref={terminalRef} role="presentation" onClick={() => inputRef.current?.focus()} onKeyDown={() => inputRef.current?.focus()}>
         {outputs.map((out, i) => (
           <div key={i} className={`output ${out.className}`}>{out.text}</div>
         ))}

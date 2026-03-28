@@ -374,11 +374,13 @@ export const EASTER_EGGS = {
   whoami: "You're asking a terminal who you are? That's... existentially concerning."
 };
 
-export default {
+const TerminalResponses = {
   MOOD_LEVELS,
-  COMMAND_TYPES, 
+  COMMAND_TYPES,
   RESPONSES,
   GENERAL_ANNOYANCE_RESPONSES,
   MOOD_CHANGE_MESSAGES,
   EASTER_EGGS
 };
+
+export default TerminalResponses;
