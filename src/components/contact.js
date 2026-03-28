@@ -3,7 +3,7 @@ import React from 'react'
 import { FaGithubAlt, FaLinkedinIn, FaEnvelope, FaFileDownload } from 'react-icons/fa';
 import { Tooltip } from 'react-tooltip';
 
-const Contact = ({ siteTitle }) => (
+const Contact = ({ siteTitle = `` }) => (
     <div className="contact">
         <a
             className="contact__link"
@@ -49,10 +49,6 @@ const Contact = ({ siteTitle }) => (
 
 Contact.propTypes = {
     siteTitle: PropTypes.string,
-}
-
-Contact.defaultProps = {
-    siteTitle: ``,
 }
 
 export default Contact

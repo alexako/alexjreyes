@@ -3,7 +3,7 @@ import React from 'react'
 import Contact from './contact'
 import Terminal from './terminal'
 
-const Intro = ({ siteTitle }) => (
+const Intro = ({ siteTitle = `` }) => (
     <div className="intro-container box">
         <h1 className="intro-container__header-lettering">
             Hi, I'm
@@ -13,20 +13,10 @@ const Intro = ({ siteTitle }) => (
         </h1>
         <div className="intro-container__content">
             A bit of a jack of all trades and a master of puns. I enjoy
-            <a
-                className="intro-container__content--link"
-                href="https://practical-sinoussi-bc5de1.netlify.app/"
-            >
-                building
-            </a>
-            anything from web apps with
-            <span className="intro-container__content--link">Angular</span>
-            to silly Cat Fact APIs in
-            <span className="intro-container__content--link">ExpressJS,</span>
-            to quirky robots with the
-            <span className="intro-container__content--link">RPi.</span>I tinker
-            around with all things tech-related and anything else that I might
-            find interesting. Got any questions for me? Email
+            building anything from web apps to AI voice assistants to robots
+            that (mostly) don't fall over. I tinker around with all things
+            tech-related and anything else that I might find interesting. Got
+            any questions for me? Email
             <a
                 className="intro-container__content--link"
                 href="mailto:me@alexjreyes.com?subject=Hi, Alex!"
@@ -42,10 +32,6 @@ const Intro = ({ siteTitle }) => (
 
 Intro.propTypes = {
     siteTitle: PropTypes.string,
-}
-
-Intro.defaultProps = {
-    siteTitle: ``,
 }
 
 export default Intro

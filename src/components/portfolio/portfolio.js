@@ -5,7 +5,7 @@ import { Categories } from "../../shared/categories.enum";
 import Projects from "./projects";
 import TagsList from '../tags';
 import Layout from '../layout';
-import SEO from '../seo';
+import Seo from '../seo';
 import HomeLink from '../home-link';
 
 
@@ -48,7 +48,7 @@ const Portfolio = (props) => {
 
   return (
     <Layout>
-      <SEO
+      <Seo
           title="Home"
           keywords={[
               `alex reyes`,
