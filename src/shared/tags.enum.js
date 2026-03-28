@@ -16,4 +16,10 @@ export const Tags = {
     FIREBASE: { display: 'firebase', styles: { backgroundColor: '#F9CB47' }},
     UI: { display: 'ui', styles: { }},
     SASS: { display: 'sass', styles: { backgroundColor: '#cc6599' }},
+    GO: { display: 'go', styles: { backgroundColor: '#00ADD8' }},
+    AWS: { display: 'aws', styles: { backgroundColor: '#FF9900' }},
+    IOT: { display: 'iot', styles: { }},
+    PYTORCH: { display: 'pytorch', styles: { backgroundColor: '#EE4C2C' }},
+    DOCKER: { display: 'docker', styles: { backgroundColor: '#2496ED' }},
+    ESPHOME: { display: 'esphome', styles: { }},
 }

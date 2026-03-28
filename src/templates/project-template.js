@@ -10,7 +10,7 @@ const Project = ({ data }) => {
             <div className="project-container">
                 <div>
                     <h1>{title}</h1>
-                    <Img fluid={project.frontmatter.image.childImageSharp.fluid} />
+                    {project.frontmatter.image && <Img fluid={project.frontmatter.image.childImageSharp.fluid} />}
                     <div
                         className="post-body"
                         dangerouslySetInnerHTML={{ __html: project.html }}

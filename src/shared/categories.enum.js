@@ -3,4 +3,5 @@ export const Categories = {
     FRONTEND: 'Frontend',
     BACKEND: 'Backend',
     MACHINELEARNING: 'Machine Learning',
+    HARDWARE: 'Hardware',
 }
