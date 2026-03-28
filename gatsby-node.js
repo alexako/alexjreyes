@@ -4,14 +4,12 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 const Tags = {
     JAVASCRIPT: { display: 'javascript', styles: { backgroundColor: '#F0DB4F' }},
     TYPESCRIPT: { display: 'typescript', styles: { backgroundColor: '#2775C4' }},
-    ANGULAR: { display: 'angular', styles: { backgroundColor: '#FF3E3E' }},
     REACT: { display: 'react', styles: { backgroundColor: '#5AD9F9' }},
     REGEX: { display: 'regex', styles: { }},
     GATSBY: { display: 'gatsby', styles: { backgroundColor: '#663399' }},
     GRAPHQL: { display: 'graphql', styles: { backgroundColor: '#E34297' }},
     COMPSCI: { display: 'compsci', styles: { }},
     HEROKU: { display: 'heroku', styles: { backgroundColor: '#9E7CC1' }},
-    EXPRESSJS: { display: 'expressjs', styles: { backgroundColor: '#689F62' }},
     PYTHON: { display: 'python', styles: { backgroundColor: '#417FB0' }},
     MACHINELEARNING: { display: 'machine-learning', styles: { }},
     DATAMODELING: { display: 'data-modeling', styles: { }},
@@ -19,6 +17,12 @@ const Tags = {
     FIREBASE: { display: 'firebase', styles: { backgroundColor: '#F9CB47' }},
     UI: { display: 'ui', styles: { }},
     SASS: { display: 'sass', styles: { backgroundColor: '#cc6599' }},
+    GO: { display: 'go', styles: { backgroundColor: '#00ADD8' }},
+    AWS: { display: 'aws', styles: { backgroundColor: '#FF9900' }},
+    IOT: { display: 'iot', styles: { }},
+    PYTORCH: { display: 'pytorch', styles: { backgroundColor: '#EE4C2C' }},
+    DOCKER: { display: 'docker', styles: { backgroundColor: '#2496ED' }},
+    ESPHOME: { display: 'esphome', styles: { }},
 }
 
 exports.createPages = async ({ actions, graphql }) => {
