@@ -28,6 +28,8 @@ No test suite exists — `npm test` just echoes a placeholder.
 
 **Shared enums** (`src/shared/`): `categories.enum.js` and `tags.enum.js` define the project categorization and tech tag systems used across portfolio filtering.
 
+**⚠️ Tag sync gotcha**: `gatsby-node.js` uses CommonJS and cannot import from `tags.enum.js`. It maintains its own duplicate Tags object. When adding a new tag to `tags.enum.js`, you **must** also add it to the Tags object at the top of `gatsby-node.js`, otherwise the tag filter page won't be generated and clicking the tag will 404.
+
 **Styling**: Per-component SCSS files in `src/components/styles/`, using mixins and extensions.
 
 **Hosting**: Firebase Hosting. CI/CD via `.github/workflows/` — deploys on merge to main, preview deploys on PRs. Uses `--legacy-peer-deps` for install due to peer dep conflicts.
