@@ -1,16 +1,17 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 const Project = ({ data }) => {
     const project = data.markdownRemark
     const { title } = project.frontmatter
+    const image = getImage(project.frontmatter.image)
 
     return (
             <div className="project-container">
                 <div>
                     <h1>{title}</h1>
-                    {project.frontmatter.image && <Img fluid={project.frontmatter.image.childImageSharp.fluid} />}
+                    {image && <GatsbyImage image={image} alt={title} />}
                     <div
                         className="post-body"
                         dangerouslySetInnerHTML={{ __html: project.html }}
@@ -32,9 +33,7 @@ query ProjectQuery($slug: String!) {
        date
        image {
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(layout: FULL_WIDTH)
         }
       }
     }

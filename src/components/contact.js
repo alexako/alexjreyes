@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { FaGithubAlt, FaLinkedinIn, FaEnvelope, FaFileDownload } from 'react-icons/fa';
-import ReactTooltip from 'react-tooltip';
+import { Tooltip } from 'react-tooltip';
 
 const Contact = ({ siteTitle }) => (
     <div className="contact">
@@ -10,7 +10,8 @@ const Contact = ({ siteTitle }) => (
             rel="noreferrer"
             href="http://github.com/alexako/"
             target="_blank"
-            data-tip="Github"
+            data-tooltip-id="contact-tooltip"
+            data-tooltip-content="Github"
         >
             <FaGithubAlt />
         </a>
@@ -19,7 +20,8 @@ const Contact = ({ siteTitle }) => (
             rel="noreferrer"
             href="https://firebasestorage.googleapis.com/v0/b/alexjreyes-d592a.appspot.com/o/Alexander_Reyes_-_Software_Engineer-profile.pdf?alt=media&token=b88b703f-9dfe-43a4-ac89-5ac8c0b13a0a"
             target="_blank"
-            data-tip="Download Resume"
+            data-tooltip-id="contact-tooltip"
+            data-tooltip-content="Download Resume"
         >
             <FaFileDownload />
         </a>
@@ -28,18 +30,20 @@ const Contact = ({ siteTitle }) => (
             rel="noreferrer"
             href="https://linkedin.com/in/alexjreyes"
             target="_blank"
-            data-tip="LinkedIn"
+            data-tooltip-id="contact-tooltip"
+            data-tooltip-content="LinkedIn"
         >
             <FaLinkedinIn />
         </a>
         <a
             className="contact__link"
             href="mailto:me@alexjreyes.com?subject=Hi, Alex!"
-            data-tip="Email me@alexjreyes.com"
+            data-tooltip-id="contact-tooltip"
+            data-tooltip-content="Email me@alexjreyes.com"
         >
             <FaEnvelope />
         </a>
-        <ReactTooltip className="tooltip" effect='solid' place={'bottom'} />
+        <Tooltip id="contact-tooltip" className="tooltip" place="bottom" />
     </div>
 )
 
